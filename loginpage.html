@@ -21,7 +21,7 @@
       .login{
         display: flex;
         width: 80%;
-        height: 650px;
+        height: 680px;
         justify-content: space-between;
         padding: 10px;
         border-radius: 20px;
@@ -87,8 +87,7 @@
      }
      .input{
       position: relative;
-       width: 80%;
-     
+       width: 80%; 
      }
      .input input{
       width: 100%;
@@ -98,7 +97,7 @@
       padding: 10px;
       background: transparent;
       z-index: 10;
-      color: black;
+      color:#fff;
       position: relative;
      }
      .input h2{
@@ -134,7 +133,7 @@
      .input input:valid~i,
      .input input:focus~i{
       height: 45px;
-      background: #8707ff;
+      background: #690dc0;
       border-radius: 10px 10px 0 0;
       z-index: 1;
       box-shadow: 0 0 12px #8707ff;
@@ -301,38 +300,26 @@
 </head>
 <body>
     <div class="login">
-
         <div class="login-left">
-            <div class="logo">
-            <div class="logo-one">
-            <h1 >SkillMatch</h1>
-            <h1 class="color">AI</h1>
-            </div>
-            <p>Smart Job Finder</p>
-           </div>
-
+            
         <div class="wel">
             <h1>Welcome Back!</h1>
             <p>Login to your account and continue your journery towards the perfect job.</p>
         </div>
-
         <div class="login-input">
           <div class="input">
-           
-                <input type="email" required>
+            <input type="email" required>
                  <span><i class='bx bxs-user-circle'></i></span>
                 <h2>Email Address</h2> 
                 <i></i>
           </div>    
-           <div class="input">
-           
+           <div class="input"> 
                 <input type="password" required>
                  <span><i class='bx bxs-lock-open-alt'></i></span>
                 <h2>Password</h2>
                 <i></i>
           </div>
         </div>
-
         <div class="link">
             <div class="link-one">
               <input type="checkbox">
@@ -340,28 +327,22 @@
             </div>
             <a href="#">Forgot Password?</a>
         </div>
-
-          <div class="login-button">
+           <div class="login-button">
             <button>Login</button>
           </div>
-             
             <div class="line">
                 <i></i>
                 <h5>or continue with</h5>
             </div>
-             
             <div class="with">
                 <button class="color-one"><i class='bx bxl-google'></i>  Continue with Google</button>
                  <button class="color-two"><i class='bx bxl-linkedin-square'></i>  Continue with Linkedin</button>
             </div>
-
             <div class="sign">
                 <h3>Don't have an account?</h3>
                 <a href="#">Sign Up</a>
             </div>
-
         </div>
-
         <div class="login-right">
             <img src="mini.png">
         </div>

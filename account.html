@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>account</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+     
+      .create{
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 80%;
+      }
+      .create-right{
+        width: 50%;
+      }
+       .create-right img{
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 0px 22px black;
+      }
+       .create-left{
+        position: relative;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+      }
+      .logo-skill{
+        width: 100%;
+      }
+        .logo{
+        display: flex;
+        flex-direction: column;
+       width: 100%;
+      margin-top: -60px;
+      }
+      .logo-one{
+        display: flex;
+        font-size: 15px;
+      }
+      .logo-one h1{
+        font-weight: bold;
+      }
+      .logo-one .color{
+        color: rgb(92, 43, 226);
+      }
+      .logo p{
+        font-weight:500;
+        font-size: 15px;
+      }
+      .create-text{
+        width: 100%;
+      }
+      .create-text h1{
+        font-size: 37px;
+      }
+      .create-text p{
+        font-size: 15px;
+        color: #656363;
+      }
+      .input-boxs{
+        display: flex;
+        flex-direction: column;
+        gap:60px;
+        width: 100%;
+        margin-top: 30px;
+      }
+      .box{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .box-one{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 48%;
+      }
+      .box-one input{
+        position:relative;
+        padding: 10px;
+        border: none;
+        outline: none;
+        display: flex;
+        background: transparent;
+        z-index: 2;
+        color: #fff;
+        letter-spacing: .1em;
+      }
+      .box-one h3{
+        position: absolute;
+        font-size: 15px;
+        color: blueviolet;
+        transition: 0.5s;
+      }
+      .box-one i{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 100%;
+        background: black;
+        transition: 0.5s;
+      }
+      .box-one span{
+        font-size: 27px;
+        position: absolute;
+        right: 30px;
+        color: rgb(88, 16, 155);
+        transition: 0.5s;
+      }
+      .box-one input:valid~h3,
+      .box-one input:focus~h3{
+        transform: translateY(-25px);
+        font-size: 13px;
+        color: black;
+      }
+      .box-one input:valid~i,
+      .box-one input:focus~i{
+        height: 42px;
+        background: rgb(138, 12, 255);
+        border-radius: 10px 10px 0 0;
+        box-shadow: 0 0 8px ;
+      }
+      .box-one input:valid~span,
+      .box-one input:focus~span{
+        transform: scale(0);
+      }
+      .skills{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-top: 20px;
+      }
+      .skill-text{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .skill-text h2{
+        font-size: 16px;
+      }
+      .skill-text p{
+        font-size: 13px;
+        font-weight: 560;
+        color: #656363;
+      }
+      .skill-input{
+        width: 100%;
+      }
+      .skill-input input{
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        outline: none;
+        border: 2px solid #9e9b9b;
+      }
+      .skill-input input:hover{
+        border-color: rgb(79, 0, 128);
+      }
+      .agree{
+        display: flex;
+        width: 100%;
+        margin-top: 10px;
+        gap: 5px;
+      }
+      .agree p{
+        font-size: 15px;
+      }
+      .agree a{
+        position: relative;
+        font-weight: bold;
+        text-decoration: none;
+        color: blue;
+      }
+      .agree a::before{
+        content: '';
+       position: absolute;
+       width: 100%;
+       height: 2px;
+       background: blue;
+       bottom: -5px;
+       transform-origin: right;
+       transform: scale(0);
+       transition: transform .5s;
+      }
+      .agree a:hover::before{
+        transform: scale(1);
+        transform-origin: left;
+      }
+      .login-button{
+        width: 100%;
+      }
+      .login-button button{
+        width: 100%;
+        padding: 12px;
+        border-radius: 5px;
+        outline: none;
+        border:  2px solid #4e1375;
+        background: linear-gradient(55deg, rgb(92, 43, 226), rgb(67, 0, 252), rgb(7, 41, 80), rgb(111, 64, 240), rgb(0, 80, 252));
+        font-size: 18px;
+        color: #fff;
+        margin-top: 10px;
+        transition: 0.5s;
+      }
+      .login-button button:hover{
+        transform: scale(1.05);
+        box-shadow: 0 0 12px black;
+      }
+      .line{
+      position: relative;
+       width:100%;
+       display: flex;
+       margin-top: 20px;
+       text-align: center;
+       margin-bottom: 10px;
+     }
+     .line i{
+      position: absolute;
+      width: 100%;
+      height: 5px;
+      border-radius: 100%;
+      background: #2f2f2f;
+     }
+     .line h5{
+      position: absolute;
+      margin-top: -7px;
+      background:#fff;
+      width: 130px;
+      margin-left: 230px;
+     }
+     .with{
+      margin-top: 10px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+     }
+     .with button{
+      padding: 13px 50px;
+      border-radius: 5px;
+      outline: none;
+      border: 1px solid #bbb6b6;
+      background: transparent;
+      font-weight: bold;
+      color: #2c2c2c;
+      transition: .5s;
+     }
+     .with button i{
+      font-size: 35px;
+      position: absolute;
+      margin-top: -10px;
+     margin-left: -40px;
+     }
+     .with button:hover{
+      transform: scale(1.1);
+      box-shadow: 0 0 8px;
+     }
+     .color-one i{
+      background: linear-gradient(55deg,red,red,yellow,blue ,green);
+      -webkit-background-clip: text;
+      color: transparent;
+     }
+     .color-two i{
+      color: blue;
+     }
+     .sign{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+       width: 100%;
+       gap: 5px;
+       margin-top: 10px;
+     }
+     .sign h3{
+    font-size: 15px;
+     }
+     .sign a{
+      font-size: 15px;
+      color:blue;
+      font-weight: bold;
+      text-decoration: none;
+      position: relative;
+     }
+     .sign a::before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: -5px;
+      background:blue;
+      border-radius: 50px;
+      transform: scale(0);
+      transition: transform.5s;
+      transform-origin: right;
+     }
+     .sign a:hover::before{
+      transform: scale(1);
+      transform-origin: left;
+      box-shadow: 0 0 12px #8707ff;
+     }
+    </style>
+</head>
+<body>
+     <div class="create">
+
+      <div class="create-left">
+            <div class="logo-skill">
+              <div class="logo">
+                <div class="logo-one">
+                   <h1 >SkillMatch</h1>
+                   <h1 class="color">AI</h1>
+                </div>
+                    <p>Smart Job Finder</p>
+              </div>
+            </div>
+            <div class="create-text">
+                <h1>Create Your Account</h1>
+                <p>Join SkillMatchAI and take the first step towards your dream career.</p>
+            </div>
+            <div class="input-boxs">
+
+
+                <div class="box">
+                    <div class="box-one">
+                        <input type="text" required>
+                        <span><i class='bx bxs-user-circle'></i></span>
+                        <h3>Full Name</h3>
+                        <i></i>
+                    </div>
+                     <div class="box-one">
+                        <input type="eamil" required>
+                        <span><i class='bx bxl-gmail'></i></span>
+                        <h3>Email Address</h3>
+                        <i></i>
+                    </div>
+                </div>
+
+                 <div class="box">
+                    <div class="box-one">
+                        <input type="password" required>
+                        <span><i class='bx bxs-lock-alt'></i></span>
+                        <h3>Password</h3>
+                        <i></i>
+                    </div>
+                     <div class="box-one">
+                        <input type="password" required>
+                         <span><i class='bx bxs-lock-alt'></i></span>
+                        <h3>Confirm Password</h3>
+                        <i></i>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="box-one">
+                        <input type="text" required>
+                         <span><i class='bx bxs-graduation'></i></span>
+                        <h3>Education Level</h3>
+                        <i></i>
+                    </div>
+                     <div class="box-one">
+                        <input type="text" required>
+                         <span><i class='bx bxs-shopping-bag'></i></span>
+                        <h3>Experience Level</h3>
+                        <i></i>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+           <div class="skills">
+            <div class="skill-text">
+                <h2>Skills/Interests</h2>
+                <p>(Select your top skills)</p>
+            </div>
+            <div class="skill-input">
+                <input type="text" placeholder="Add your skills (e.g. Python,SQL,Data Analysis)">
+            </div>
+           </div>
+
+
+           <div class="agree">
+           
+                <input type="checkbox">
+                <p>I agree to the<a href="#">Terms & Conditions and Privacy Policy.</a></p>
+           
+           </div>
+
+             
+           <div class="login-button">
+            <button>Create Account</button>
+          </div>
+
+              <div class="line">
+                <i></i>
+                <h5>or continue with</h5>
+            </div>
+
+             <div class="with">
+                <button class="color-one"><i class='bx bxl-google'></i>  Continue with Google</button>
+                 <button class="color-two"><i class='bx bxl-linkedin-square'></i>  Continue with Linkedin</button>
+            </div>
+
+            <div class="sign">
+                <h3>Already have a account?</h3>
+                <a href="loginpage.html">Login</a>
+            </div>
+
+      </div>
+
+
+      <div class="create-right">
+        <img src="mini1.png">
+      </div>
+
+
+     </div>
+</body>
+</html>
