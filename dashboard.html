@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+     <style>
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body{
+        display: flex;
+        height: 100vh;
+        background: #e4d9ee;
+        justify-content: center;
+       position: fixed;
+       width: 100%;
+      }
+      .dashboard{
+        display: flex;
+        width: 100%;
+        
+      }
+      .dashboard-left{
+        width: 19%;
+       background:linear-gradient(55deg,rgb(11, 3, 28),rgb(22, 15, 85),rgb(13, 4, 49));
+       display: flex;
+       flex-direction: column;
+       padding: 10px;
+       position: relative;
+       gap:10px;
+       border-radius: 5px;
+       color: #fff;
+       height: 100%;
+      }
+      .das-one{
+    width: 100%;
+      }
+    .logo{
+     display: flex;
+     flex-direction: column;
+       width: 100%;
+      }
+      .logo-one{
+        display: flex;
+        font-size: 15px;
+      }
+      .logo-one h1{
+        font-weight: bold;
+      }
+      .logo-one .color{
+        color: rgb(92, 43, 226);
+      }
+      .logo p{
+        font-weight:500;
+        font-size: 15px;
+      }
+      .das-two{
+      display: flex;
+      gap: 10px;
+      position: relative;
+      align-items: center;
+      }
+      .das-two span{
+        font-size: 80px;
+      }
+      .das-two::before{
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        background: rgb(11, 227, 43);
+        right: 70%;
+        bottom: 25%;
+        border-radius: 50%;
+      }
+      .pro-info{
+        display: flex;
+        flex-direction: column;
+      }
+      .pro-info h3{
+        font-size: 15px;
+        color: plum;
+      }
+      .das-three{
+        display: flex;
+        flex-direction: column; 
+        gap:5px;
+        border-bottom: 2px solid #7e78be;
+        overflow-y: auto;
+        height: 53%;
+        width: 104%;
+      }
+      .icon.a{
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        background: rgb(104, 16, 255);
+        border-radius: 5px;
+        border-left: 6px solid rgb(255, 149, 255);
+      }
+      .icon icon.b:checked ~ .icon.a{
+        transform: translateY(calc(60px*1));
+      }
+      .icon{
+         display: flex;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 5px;
+       align-items: center;
+       margin-bottom: 5px;
+      }
+      .icon span{
+        font-size: 28px;
+      }
+      .icon h3{
+        font-size: 15px;
+        font-weight: 100;
+      }
+      .icon.a h3,.icon.a span{
+        color:#fff;
+      }
+      .icon{
+        text-decoration: none;
+        color: #7e78be;
+      }
+      .icon:hover{
+      background: rgba(104, 99, 114, 0.499);
+      color: #fff;
+      }
+      .icon.a:hover{
+     background: rgb(104, 16, 255);
+      }
+      .pre{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 22%;
+        padding: 5px;
+        background: #7e78be2b;
+        border-radius: 10px;
+        gap: 10px;
+        border: 1px solid #7e78be58;
+      }
+      .pro-icon{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        justify-content: center;
+      }
+      .pro-icon span{
+        font-size: 30px;
+        color: rgb(255, 191, 43);
+      }
+      .pro-icon h3{
+        font-size: 18px;
+      }
+      .pre p{
+        font-size: 13px;
+        text-align: center;
+        color: burlywood;
+      }
+      .pre button{
+        padding: 12px;
+        border-radius: 10px;
+        width: 100%;
+         font-size: 16px;
+         font-weight: bold;
+         color: #fff;
+         background: linear-gradient(55deg,#3927fe,#7e78be);
+         border: none;
+      }
+      .right{
+        display: flex;
+        position:relative;
+        flex-direction: column;
+        overflow-y: auto;
+        width: 100%;
+      }
+      .right-one{
+        display: flex;
+        background-color: #fff;
+        justify-content: space-between;
+        position: fixed;
+        width: 84%;
+         z-index: 5;
+      }
+        .search{
+          display: flex;
+          position: relative;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+        }
+        .search input{
+          padding: 10px 30px;
+          width: 430px;
+          border-radius: 5px;
+          border: 1px solid #3927fe;
+        }
+        .search span{
+          display: flex;
+          position: absolute;
+          left: 20px;
+          font-size: 20px;
+        }
+        .message{
+          display: flex;
+          width: 300px;
+          justify-content:space-evenly;
+          align-items: center;
+        }
+        .search-two{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+        .search-one{
+          display: flex;
+          gap: 20px;
+        }
+        .search-one span{
+          font-size: 23px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:5px;
+        }
+        .search-two span{
+          font-size: 27px;
+        }
+        .sp-one{
+          position: relative;
+        }
+        .sp-one::before{
+          content: '';
+          position: absolute;
+          width: 8px;
+          right: 6px;
+          top: 8px;
+          height: 8px;
+          background: red;
+          border-radius:50%;
+        }
+        .search-one span:hover{
+          background: #7e78be92;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:5px;
+          border-radius: 50%;
+        }
+        .right-two{
+          padding: 10px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 50px;
+        }
+        .wel p{
+          font-size: 13px;
+        }
+        .wel-but button{
+          padding: 10px;
+          border-radius: 5px;
+          border: none;
+          background: #3927fe;
+          font-size: 15px;
+          color: #fff;
+        }
+        .right-three{
+          display: flex;
+          padding: 10px;
+          justify-content: space-between;
+        }
+        .cards{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 20px;
+        background: #fff;
+        border-radius: 12px;
+        width: 300px;  
+        }
+        .card-text{
+          display: flex;
+          flex-direction: column;
+        }
+        .card-text h2{
+          font-size: 18px;
+          color: #31313b;
+        }
+        .card-text h1{
+          font-size: 23px;
+        }
+        .card-text p{
+          font-size: 12px;
+          font-weight: bold;
+          color: rgb(13, 167, 13);
+        }
+        .card span{
+          font-size: 35px;
+          background: #7f7fc2;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+          border-radius: 12px;
+        }
+        .new-bar{
+         display: grid;
+         width: 100%;
+         padding: 10px;
+         grid-template-columns: 1fr 2fr 3fr;
+         gap: 20px;
+        }
+        .new-one{
+          width: 470px;
+          background: #fff;
+          border-radius: 10px;
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .new-one h2{
+          font-size: 15px;
+        }
+        .graph{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        }
+        .gra-text{
+          display: flex;
+          flex-direction: column;
+          font-size: 12px;
+          gap: 5px;
+        }
+        .gra-text p{
+          font-size: 13px;
+        }
+        .slide-bar{
+          display: flex;
+          position: relative;
+          width: 100%;
+          border: none;
+          background: #6f64ed5e;
+          height: 10px;
+          border-radius: 20px;
+        }
+        .slide{
+          position: absolute;
+          width: 100%;
+          background: #3927fe;
+          height: 10px;
+          border-radius: 10px;
+        }
+        .new-one h3{
+          font-size: 15px;
+        }
+        .new-two{
+          border-radius: 10px;
+          padding: 10px;
+          background: #fff;
+          width: 380px;
+        }
+        .new-three{
+           border-radius: 10px;
+          padding: 10px;
+          background: #a4a6c9;
+        }
+        .chart{
+           border-radius: 10px;
+          padding: 10px;
+          background: #fff;
+            grid-column-start:1 ;
+          grid-column-end: 3;
+        }
+        .gra{
+          position: relative;
+        }
+        .gra h2{
+          font-size: 28px;
+          position: absolute;
+          margin-top: -115px;
+          margin-left: 85px;
+        }
+        .new-five{
+           border-radius: 10px;
+          padding: 10px;
+          background: #fff;
+        }
+        .new-two{
+          display: flex;
+          flex-direction: column;
+          width: 395px;
+          position: relative;
+        }
+        .new-two-text h3{
+            font-size: 17px;
+        }
+        .top{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+            gap: 30px;
+            margin-top: 35px;
+        }
+        .top-slide{
+          width: 100%;
+          position: relative;
+          background: #7e78be70;
+          width: 90%;
+          height: 10px;
+          border-radius: 20px;
+        }
+        .top-slide h2{
+          position: absolute;
+          margin-top: -20px;
+          font-size: 12px;
+        }
+        .top-slide span{
+          display: flex;
+          position: absolute;
+        }
+        .new-two p{
+          margin-top: 20px;
+          font-weight: bold;
+        }
+        .new-three{
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          background: #fff;
+          height: 100%;
+          width: 350px;
+        }
+        .recommended{
+          display: flex;
+          justify-content: space-between;
+        }
+        .recommended h3{
+          font-size: 18px;
+        }
+        .recommended p{
+          font-size: 13px;
+          font-weight: bold;
+          color: #3927fe;
+        }
+        .for{
+         display: flex;
+         flex-direction: column;
+         justify-content: space-evenly;
+         height: 100%;
+        }
+        .all{
+          display: flex;
+          gap: 10px;
+          justify-content:space-between;
+          align-items: center;
+           border: 1px solid #7e78be;
+           border-radius: 5px;
+           padding: 10px;
+        }
+        .all span{
+          font-size: 30px;
+        }
+        .all-text{
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+          font-size: 12px;
+        }
+        .all-text p{
+          width: 200px;
+        }
+        .all h2{
+          font-size: 13px;
+          width: 125px;
+          padding: 20px;
+          margin-left: -20px;
+          height: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 3px;
+          background: rgba(10, 180, 10, 0.384);
+          color: rgb(12, 135, 6);
+        }
+        .new-five{
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          background: #fff;
+        
+          height:100%;
+        }
+        .card.a span{
+          background: #7474904e;
+          color: #3927fe;
+        }
+        .card.b span{
+          background: #6dab714e;
+          color: #10b465;
+        }
+        .card.c span{
+          background: #f2c0754e;
+          color:#d29700;
+        }
+         .card.d span{
+          background: #7598f24e;
+          color:blue;
+        }
+        .top-slide h3{
+          position:absolute;
+          right: -30px;
+          font-size: 13px;
+          display: flex;
+          align-items: center;
+          margin-top: -5px;
+        }
+        .new-five .all h2{
+          width: 90px;
+          margin-left: -30px;
+        }
+        .chart-card {
+          position: absolute;
+      padding: 24px 32px 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      width: 100%;
+      max-width: 850px;
+    }
+
+    .chart-container {
+      display: flex;
+      height: 220px;
+      position: relative;
+    }
+    .y-axis {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: 12px;
+      padding-bottom: 24px;
+      color: #8b90a0;
+      font-size: 13px;
+      text-align: right;
+      min-width: 32px;
+    }
+
+
+    .chart-body {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .grid-lines {
+      position: absolute;
+      top: 6px;
+      left: 0;
+      right: 0;
+      bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .grid-line {
+      border-b: 1px dashed #f0f0f6;
+      width: 100%;
+    }
+
+    /* SVG Layer */
+    .chart-svg {
+      width: 100%;
+      height: calc(100% - 24px);
+      overflow: visible;
+    }
+
+    .line-path {
+      fill: none;
+      stroke: #5a20ee;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .area-path {
+      fill: url(#chart-gradient);
+    }
+
+    .data-point {
+      fill: #5a20ee;
+      stroke: #ffffff;
+      stroke-width: 1.5;
+    }
+
+    /* X-Axis Labels */
+    .x-axis {
+      display: flex;
+      justify-content: space-between;
+      height: 24px;
+      align-items: center;
+      color: #8b90a0;
+      font-size: 13px;
+    }
+
+    .x-axis span {
+      flex: 1;
+      text-align: center;
+    }
+    .chart{
+      height: 330px;
+    }
+    .foot{
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      gap: 20px;
+    }
+    .foot-one{
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .new-cards{
+      display: flex;
+       justify-content: space-between;
+       gap: 20px;
+       margin-top: 10px;
+    }
+    .car{
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #7e78be18;
+      gap: 20px;
+      transition: 0.5s;
+    }
+    .car:hover{
+      transform: scale(1.05);
+      box-shadow: 0 0 12px black;
+    }
+    .car span{
+      background: #7070b454;
+      padding: 10px;
+      font-size: 28px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #5a20ee;
+    }
+    .car-info{
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .car-info p{
+      color: #3a2e5aac;
+    }
+     </style>
+</head>
+<body>
+    <div class="dashboard">
+
+      <div class="dashboard-left">
+        <div class="das-one">
+            <div class="logo">
+                <div class="logo-one">
+                   <h1 >SkillMatch</h1>
+                   <h1 class="color">AI</h1>
+                </div>
+                    <p>Smart Job Finder</p>
+              </div>
+        </div>
+          
+        <div class="das-two">
+            <div class="profile">
+                <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+            <div class="pro-info">
+                <h2>Hello, Kaja!</h2>
+                <h3>Job Seeker</h3>
+            </div>
+        </div>
+
+        <div class="das-three">
+
+            <div class="icon a">
+                <span><i class='bx bxs-dashboard'></i></span>
+                <h3>Dashboard</h3>  </div>
+             <div class="icon" id="user">
+                <span ><i class='bx bxs-user'></i></span>
+                <h3>Profile</h3> </div>
+             <div class="icon">
+                <span><i class='bx bxs-file'></i></span>
+                <h3>Resume Builder</h3> </div>
+             <div class="icon">
+                <span><i class='bx bxs-pie-chart-alt-2'></i></span>
+                <h3>Resume Analysis</h3> </div>
+             <div class="icon">
+                <span><i class='bx bxs-briefcase-alt-2'></i></span>
+                <h3>Find Jobs</h3> </div>
+             <div class="icon">
+                <span><i class='bx bxs-star'></i></span>
+                <h3>Recommended Jobs</h3> </div>
+             <div class="icon">
+                <span><i class='bx bx-line-chart'></i></span>
+                <h3>Skill Gap Analysis</h3> </div>
+             <div class="icon">
+                <span><i class='bx bxs-bookmark'></i></span>
+                <h3>Saved Jobs</h3> </div>
+                <div class="icon">
+                <span><i class='bx bxs-file'></i></span>
+                <h3>Application</h3> </div>
+                <div class="icon">
+                <span><i class='bx bxs-food-menu'></i></span>
+                <h3>Resources</h3> </div>
+             <div class="icon">
+                <span><i class='bx bxs-cog'></i></span>
+                <h3>Settings</h3> </div>
+
+        </div>
+
+          <div class="pre">
+            <div class="pro-icon">
+                <span><i class='bx bxs-user-circle'></i></span>
+                <h3>Upgrade to Pro</h3>
+            </div>
+            <p>Access advanced features</p>
+            <div class="pro-but">
+                <button>Upgrade Now</button>
+            </div>
+          </div>
+
+      </div>
+         
+
+      <div class="right">
+          
+        <div class="right-one">
+          <div class="search">
+            <input  type="text" placeholder="Search for jobs, skills or companies....." >
+            <span><i class='bx bx-search'></i></span>
+          </div>
+          <div class="message">
+            <div class="search-one">
+            <span class="sp-one"><i class='bx bx-bell'></i></span>
+            <span class="sp-two"><i class='bx bx-message'></i></span>
+            </div>
+            <div class="search-two">
+              <h2>Kaja</h2>
+              <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="right-two">
+          <div class="wel">
+          <h1>Welcome back, Kaja!👋</h1>
+          <p>Here's what's happening with your career journey today.</p>
+          </div>
+          <div class="wel-but">
+            <button>Upload Resume</button>
+          </div>
+        </div>
+
+        <div class="right-three">
+          <div class="cards">
+            <div class="card a">
+              <span><i class='bx bxs-briefcase-alt-2'></i></span>
+            </div>
+            <div class="card-text">
+              <h2>Recommended</h2>
+              <h1>24</h1>
+              <p>New matches</p>
+            </div>
+          </div>
+           <div class="cards">
+            <div class="card b">
+              <span><i class='bx bx-line-chart'></i></span>
+            </div>
+            <div class="card-text">
+              <h2>Profile Strength</h2>
+              <h1>75%</h1>
+              <p>Goob jobs!</p>
+            </div>
+          </div>
+           <div class="cards">
+            <div class="card c">
+              <span><i class='bx bxs-star'></i></span>
+            </div>
+            <div class="card-text">
+              <h2>Application</h2>
+              <h1>12</h1>
+              <p>In progress</p>
+            </div>
+          </div>
+           <div class="cards">
+            <div class="card d">
+              <span><i class='bx bxs-bookmark'></i></span>
+            </div>
+            <div class="card-text">
+              <h2>Saved Jobs</h2>
+              <h1>8</h1>
+              <p>Jobs saved</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="new-bar">
+          <div class="new-one">
+            <h2>Job Match Score</h2>
+            <div class="graph">
+              <div class="gra">
+              <svg class="s" width="200" height="200" viewbox="0 0 53 53">
+                <circle class="src1" cx="28" cy="28" r="20" fill="transparent"></circle>
+                <circle class="src2" cx="28" cy="28" r="20" fill="transparent" stroke="#a4a6c9" stroke-width="5px" stroke-dasharray="90 0" stroke-dashoffset="0"></circle>
+                <circle class="src3" cx="28" cy="28" r="20" fill="transparent" stroke="rgb(92, 43, 226)" stroke-width="7px" stroke-dasharray="160 20" stroke-dashoffset="90"></circle>
+                
+              </svg>
+              <h2>85%</h2>
+            </div>
+            <div class="gra-text">
+              <h2>Excellent Match</h2>
+              <p>Your profile Matches Well with Similar job opportunities.</p>
+            </div>
+            </div>
+            <div class="slide-bar"> 
+              <span class="slide" style="width: 85%;"></span>
+            </div>
+            <h3>Improve your score →</h3>
+          </div>
+
+           <div class="new-two">
+            <div class="new-two-text">
+              <h3>Top Skills</h3>
+            </div>
+            <div class="top">
+            <div class="top-slide">
+              <h2>python</h2>
+              <h3>90%</h3>
+              <span class="slide" style="width: 90%;"></span>
+            </div>
+             <div class="top-slide">
+               <h2>Machine Learning</h2>
+               <h3>90%</h3>
+              <span class="slide" style="width: 85%;"></span>
+            </div>
+             <div class="top-slide">
+               <h2>SQL</h2>
+               <h3>90%</h3>
+              <span class="slide" style="width: 80%;"></span>
+            </div>
+             <div class="top-slide">
+               <h2>Data Analysis</h2>
+               <h3>90%</h3>
+              <span class="slide" style="width: 75%;"></span>
+            </div>
+             <div class="top-slide">
+               <h2>Communication</h2>
+                <h3>90%</h3>
+              <span class="slide" style="width: 70%;"></span>
+            </div>
+            </div>
+            <p>View full still report →</p>
+           </div>
+
+
+           <div class="new-three">
+            <div class="recommended">
+              <h3>Recommended for you</h3>
+              <p>Sell all</p>
+            </div>
+            <div class="for">
+              <div class="all">
+                <span><i class='bx bxl-google'></i></span>
+                <div class="all-text">
+                  <h3>Data Scientist</h3>
+                  <p>Google . Bangalore, India</p>
+                </div>
+                <h2>95% Match</h2>
+              </div>
+              <div class="all">
+                <span><i class='bx bxl-windows'></i></span>
+                <div class="all-text">
+                  <h3>Data Scientist</h3>
+                  <p>ML Engineer . Hyderabad, India</p>
+                </div>
+                <h2>95% Match</h2>
+              </div>
+              <div class="all">
+                <span><i class='bx bxl-amazon'></i></span>
+                <div class="all-text">
+                  <h3>Data Analyst</h3>
+                  <p>Amazon . Pune, India</p>
+                </div>
+                <h2>88% Match</h2>
+              </div>
+            </div>
+           </div>
+
+
+            
+          <div class="chart">
+            <div class="chart-one">
+              <h3>Profile Views</h3>
+              <select>
+                <option value="1">This Week</option>
+                <option value="2">This Month</option>
+                <option value="3">This Year</option>
+              </select>
+            </div>
+            <div class="chart-card">
+    <div class="chart-container">
+      
+      <!-- Y-Axis -->
+      <div class="y-axis">
+        <span>100</span>
+        <span>75</span>
+        <span>50</span>
+        <span>25</span>
+        <span>0</span>
+      </div>
+
+      <!-- Chart Body -->
+      <div class="chart-body">
+        <!-- SVG Graphic -->
+        <svg class="chart-svg" viewBox="0 0 600 180" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="chart-gradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5a20ee" stop-opacity="0.25" />
+              <stop offset="100%" stop-color="#5a20ee" stop-opacity="0.01" />
+            </linearGradient>
+          </defs>
+
+          <!-- Gradient Area -->
+          <polygon 
+            class="area-path" 
+            points="42,120  135,80  228,125  321,50  414,95  507,60  600,15  600,180  42,180" 
+          />
+
+          <!-- Connecting Line -->
+          <polyline 
+            class="line-path" 
+            points="42,120  135,80  228,125  321,50  414,95  507,60  600,15" 
+          />
+
+          <!-- Data Dots -->
+          <circle class="data-point" cx="42" cy="120" r="5" />
+          <circle class="data-point" cx="135" cy="80" r="5" />
+          <circle class="data-point" cx="228" cy="125" r="5" />
+          <circle class="data-point" cx="321" cy="50" r="5" />
+          <circle class="data-point" cx="414" cy="95" r="5" />
+          <circle class="data-point" cx="507" cy="60" r="5" />
+          <circle class="data-point" cx="600" cy="15" r="5" />
+        </svg>
+
+        <!-- X-Axis Labels -->
+        <div class="x-axis">
+          <span>May 20</span>
+          <span>May 21</span>
+          <span>May 22</span>
+          <span>May 23</span>
+          <span>May 24</span>
+          <span>May 25</span>
+          <span>May 26</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+          </div>
+
+
+           <div class="new-five">
+            <div class="recommended">
+              <h3>Recommended for you</h3>
+              <p>Sell all</p>
+            </div>
+            <div class="for">
+              <div class="all">
+                <span><i class='bx bxl-google'></i></span>
+                <div class="all-text">
+                  <h3>Data Scientist</h3>
+                  <p>Google . Bangalore, India</p>
+                </div>
+                <h2>Under Review</h2>
+              </div>
+              <div class="all">
+                <span><i class='bx bxl-windows'></i></span>
+                <div class="all-text">
+                  <h3>Data Scientist</h3>
+                  <p>ML Engineer . Hyderabad, India</p>
+                </div>
+                <h2>shortlisted</h2>
+              </div>
+              <div class="all">
+                <span><i class='bx bxl-amazon'></i></span>
+                <div class="all-text">
+                  <h3>Data Analyst</h3>
+                  <p>Amazon . Pune, India</p>
+                </div>
+                <h2>Under Review</h2>
+              </div>
+            </div>
+           </div>
+
+
+
+        </div>
+
+
+
+        <div class="foot">
+          <div class="foot-one">
+          <h3>Suggested Actions to Improve Your Profile</h3>
+          <div class="new-cards">
+            <div class="car a">
+              <span><i class='bx bx-code'></i></span>
+              <div class="car-info">
+                <h3>Add More Skills</h3>
+                <p>Add trending skills to increase matches</p>
+              </div>
+              <h2>→</h2>
+            </div>
+            <div class="car b">
+              <span><i class='bx bx-file'></i></span>
+              <div class="car-info">
+                <h3>Add More Skills</h3>
+                <p>Add trending skills to increase matches</p>
+              </div>
+              <h2>→</h2>
+            </div>
+            <div class="car c">
+              <span><i class='bx bx-code'></i></span>
+              <div class="car-info">
+                <h3>Add More Skills</h3>
+                <p>Add trending skills to increase matches</p>
+              </div>
+              <h2>→</h2>
+            </div>
+            <div class="car d">
+              <span><i class='bx bxs-user'></i></span>
+              <div class="car-info">
+                <h3>Add More Skills</h3>
+                <p>Add trending skills to increase matches</p>
+              </div>
+              <h2>→</h2>
+            </div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+      
+    </div>
+</body>
+</html>

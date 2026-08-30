@@ -121,14 +121,15 @@
       font-size: 26px;
       display: flex;
       right: 30px;
-      margin-top: -70px;
-      transform: scale(0);
+      margin-top: -30px;
+      transform: scale(1);
       transition: .5s;
+      color: #8707ff;
      }
      .input input:valid~span,
      .input input:focus~span{
       color:balck;
-      transform: scale(1);
+      transform: scale(0);
      }
      .input input:valid~i,
      .input input:focus~i{
@@ -296,9 +297,21 @@
       transform-origin: left;
       box-shadow: 0 0 12px #8707ff;
      }
+     .ba h3{
+      position: absolute;
+      top: 50px;
+      font-size: 15px;
+      color: #690dc0;
+      cursor: pointer;
+     }
     </style>
 </head>
 <body>
+  <div class="ba">
+ <a href="landpage.html">
+   <h3>Back to page →</h3>
+ </a>
+  </div>
     <div class="login">
         <div class="login-left">
             
@@ -340,12 +353,16 @@
             </div>
             <div class="sign">
                 <h3>Don't have an account?</h3>
-                <a href="#">Sign Up</a>
+                <a href="account.html">Sign Up</a>
             </div>
         </div>
         <div class="login-right">
             <img src="mini.png">
         </div>
     </div>
+
+    <script>
+   
+    </script>
 </body>
 </html>
