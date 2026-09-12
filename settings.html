@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        :root {
+            --bg-color: #f5f6fa;
+            --card-bg: #ffffff;
+            --primary: #5200ff;
+            --primary-light: #f0ebff;
+            --text-dark: #1e1e2f;
+            --text-muted: #6c757d;
+            --border-color: #eef0f5;
+            --success: #10b981;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body{
+            display: flex;
+            height: 100vh;
+            background: #e4d9ee;
+            justify-content: center;
+            position: fixed;
+            width: 100%;
+        }
+        .dashboard{
+            display: flex;
+            width: 100%;
+        }
+        .dashboard-left{
+            width: 19%;
+            background: linear-gradient(55deg,rgb(11, 3, 28),rgb(22, 15, 85),rgb(13, 4, 49));
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            position: relative;
+            gap: 10px;
+            border-radius: 5px;
+            color: #fff;
+            height: 100%;
+        }
+        .das-one{
+            width: 100%;
+        }
+        .logo{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .logo-one{
+            display: flex;
+            font-size: 15px;
+        }
+        .logo-one h1{
+            font-weight: bold;
+        }
+        .logo-one .color{
+            color: rgb(92, 43, 226);
+        }
+        .logo p{
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .das-two{
+            display: flex;
+            gap: 10px;
+            position: relative;
+            align-items: center;
+        }
+        .das-two span{
+            font-size: 80px;
+        }
+        .das-two::before{
+            content: '';
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            background: rgb(11, 227, 43);
+            right: 70%;
+            bottom: 25%;
+            border-radius: 50%;
+        }
+        .pro-info{
+            display: flex;
+            flex-direction: column;
+        }
+        .pro-info h3{
+            font-size: 15px;
+            color: plum;
+        }
+        .das-three{
+            display: flex;
+            flex-direction: column; 
+            gap: 5px;
+            border-bottom: 2px solid #7e78be;
+            overflow-y: auto;
+            height: 53%;
+            width: 104%;
+        }
+        .icon.a{
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+            background: rgb(104, 16, 255);
+            border-radius: 5px;
+            border-left: 6px solid rgb(255, 149, 255);
+        }
+        .icon icon.b:checked ~ .icon.a{
+            transform: translateY(calc(60px*1));
+        }
+        .icon{
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            align-items: center;
+            margin-bottom: 5px;
+            text-decoration: none;
+            color: #7e78be;
+        }
+        .icon span{
+            font-size: 28px;
+        }
+        .icon h3{
+            font-size: 15px;
+            font-weight: 100;
+        }
+        .icon.a h3, .icon.a span{
+            color: #fff;
+        }
+        .icon:hover{
+            background: rgba(104, 99, 114, 0.499);
+            color: #fff;
+        }
+        .icon.a:hover{
+            background: rgb(104, 16, 255);
+        }
+        .pre{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 22%;
+            padding: 5px;
+            background: #7e78be2b;
+            border-radius: 10px;
+            gap: 10px;
+            border: 1px solid #7e78be58;
+        }
+        .pro-icon{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            justify-content: center;
+        }
+        .pro-icon span{
+            font-size: 30px;
+            color: rgb(255, 191, 43);
+        }
+        .pro-icon h3{
+            font-size: 18px;
+        }
+        .pre p{
+            font-size: 13px;
+            text-align: center;
+            color: burlywood;
+        }
+        .pre button{
+            padding: 12px;
+            border-radius: 10px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(55deg,#3927fe,#7e78be);
+            border: none;
+        }
+        .right{
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            overflow-y: auto;
+            width: 100%;
+        }
+        .right-one{
+            display: flex;
+            background-color: #fff;
+            justify-content: space-between;
+            position: fixed;
+            width: 84%;
+            z-index: 5;
+        }
+        .search{
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+        .search input{
+            padding: 10px 30px;
+            width: 430px;
+            border-radius: 5px;
+            border: 1px solid #3927fe;
+        }
+        .search span{
+            display: flex;
+            position: absolute;
+            left: 20px;
+            font-size: 20px;
+        }
+        .message{
+            display: flex;
+            width: 300px;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .search-two{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .search-one{
+            display: flex;
+            gap: 20px;
+        }
+        .search-one span{
+            font-size: 23px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+        .search-two span{
+            font-size: 27px;
+        }
+        .sp-one{
+            position: relative;
+        }
+        .sp-one::before{
+            content: '';
+            position: absolute;
+            width: 8px;
+            right: 6px;
+            top: 8px;
+            height: 8px;
+            background: red;
+            border-radius: 50%;
+        }
+        .search-one span:hover{
+            background: #7e78be92;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        
+        .main-content {
+            flex: 1;
+            padding: 24px 32px;
+            background-color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #1e293b;
+            margin-top: 50px;
+        }
+
+        .header-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header-text h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .header-text p {
+            color: #64748b;
+            font-size: 13px;
+            margin: 4px 0 0 0;
+        }
+
+        .btn-save {
+            background: #4f46e5;
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-save:hover {
+            background: #4338ca;
+        }
+
+        .settings-container {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 20px;
+        }
+
+        .settings-nav {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            height: fit-content;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 4px;
+        }
+
+        .nav-item i {
+            font-size: 18px;
+        }
+
+        .nav-item.active {
+            background: #f0ebff;
+            color: #5200ff;
+            font-weight: 600;
+        }
+
+        .nav-item:hover:not(.active) {
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        .settings-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .settings-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .settings-card p {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .form-group input, .form-group select {
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #5200ff;
+        }
+
+        .setting-toggle-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .setting-toggle-row:last-child {
+            border-bottom: none;
+        }
+
+        .toggle-info h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 2px;
+        }
+
+        .toggle-info p {
+            font-size: 11px;
+            color: #64748b;
+            margin: 0;
+        }
+
+        /* Toggle Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 22px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #cbd5e1;
+            transition: .3s;
+            border-radius: 22px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #5200ff;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+
+      <div class="dashboard-left">
+        <div class="das-one">
+            <div class="logo">
+                <div class="logo-one">
+                   <h1>SkillMatch</h1>
+                   <h1 class="color">AI</h1>
+                </div>
+                <p>Smart Job Finder</p>
+            </div>
+        </div>
+          
+        <div class="das-two">
+            <div class="profile">
+                <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+            <div class="pro-info">
+                <h2>Hello, Kaja!</h2>
+                <h3>Job Seeker</h3>
+            </div>
+        </div>
+
+        <div class="das-three">
+            <a href="dashboard.html">
+                <div class="icon">
+                    <span><i class='bx bxs-dashboard'></i></span>
+                    <h3>Dashboard</h3>
+                </div>
+            </a>
+            <a href="profile.html">
+                <div class="icon" id="user">
+                    <span><i class='bx bxs-user'></i></span>
+                    <h3>Profile</h3>
+                </div>
+            </a>
+            <a href="resume.html">
+                <div class="icon">
+                    <span><i class='bx bxs-file'></i></span>
+                    <h3>Resume Builder</h3>
+                </div>
+            </a>
+            <a href="resumeana.html">
+                <div class="icon">
+                    <span><i class='bx bxs-pie-chart-alt-2'></i></span>
+                    <h3>Resume Analysis</h3>
+                </div>
+            </a>
+            <a href="find.html">
+                <div class="icon">
+                    <span><i class='bx bxs-briefcase-alt-2'></i></span>
+                    <h3>Find Jobs</h3>
+                </div>
+            </a>
+            <a href="recommend.html">
+                <div class="icon">
+                    <span><i class='bx bxs-star'></i></span>
+                    <h3>Recommended Jobs</h3>
+                </div>
+            </a>
+            <a href="skill.html">
+                <div class="icon">
+                    <span><i class='bx bx-line-chart'></i></span>
+                    <h3>Skill Gap Analysis</h3>
+                </div>
+            </a>
+            <a href="saved.html">
+                <div class="icon">
+                    <span><i class='bx bxs-bookmark'></i></span>
+                    <h3>Saved Jobs</h3>
+                </div>
+            </a>
+            <a href="application.html">
+                <div class="icon">
+                    <span><i class='bx bxs-file'></i></span>
+                    <h3>Application</h3>
+                </div>
+            </a>
+            <a href="resourse.html">
+                <div class="icon">
+                    <span><i class='bx bxs-food-menu'></i></span>
+                    <h3>Resources</h3>
+                </div>
+            </a>
+            <a href="settings.html">
+                <div class="icon a">
+                    <span><i class='bx bxs-cog'></i></span>
+                    <h3>Settings</h3>
+                </div>
+            </a>
+        </div>
+
+        <div class="pre">
+            <div class="pro-icon">
+                <span><i class='bx bxs-user-circle'></i></span>
+                <h3>Upgrade to Pro</h3>
+            </div>
+            <p>Access advanced features</p>
+            <div class="pro-but">
+                <button>Upgrade Now</button>
+            </div>
+        </div>
+
+      </div>
+
+      <div class="right">
+          
+        <div class="right-one">
+          <div class="search">
+            <input type="text" placeholder="Search for jobs, skills or companies.....">
+            <span><i class='bx bx-search'></i></span>
+          </div>
+          <div class="message">
+            <div class="search-one">
+                <span class="sp-one"><i class='bx bx-bell'></i></span>
+                <span class="sp-two"><i class='bx bx-message'></i></span>
+            </div>
+            <div class="search-two">
+              <h2>Kaja</h2>
+              <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+          </div>
+        </div>
+
+        <main class="main-content">
+          <div class="header-banner">
+            <div class="header-text">
+              <h1>Account Settings</h1>
+              <p>Manage your account preferences, notifications, and security options.</p>
+            </div>
+            <button class="btn-save">💾 Save Changes</button>
+          </div>
+
+          <div class="settings-container">
+            <div class="settings-nav">
+              <div class="nav-item active">
+                <i class='bx bxs-user-detail'></i>
+                <span>General Profile</span>
+              </div>
+              <div class="nav-item">
+                <i class='bx bxs-bell'></i>
+                <span>Notifications</span>
+              </div>
+              <div class="nav-item">
+                <i class='bx bxs-lock-alt'></i>
+                <span>Security & Login</span>
+              </div>
+              <div class="nav-item">
+                <i class='bx bxs-shield-quarter'></i>
+                <span>Privacy Control</span>
+              </div>
+            </div>
+
+            <div class="settings-content">
+              <div class="settings-card">
+                <h3>Personal Information</h3>
+                <p>Update your account details and contact preferences.</p>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" value="Kaja">
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" value="User">
+                  </div>
+                  <div class="form-group full-width">
+                    <label>Email Address</label>
+                    <input type="email" value="kaja@example.com">
+                  </div>
+                  <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" value="+91 9876543210">
+                  </div>
+                  <div class="form-group">
+                    <label>Preferred Language</label>
+                    <select>
+                      <option selected>English (US)</option>
+                      <option>Spanish</option>
+                      <option>Hindi</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="settings-card">
+                <h3>Notification Preferences</h3>
+                <p>Choose what alerts and emails you want to receive.</p>
+
+                <div class="setting-toggle-row">
+                  <div class="toggle-info">
+                    <h4>Job Recommendations</h4>
+                    <p>Get daily emails about jobs matching your skills.</p>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-toggle-row">
+                  <div class="toggle-info">
+                    <h4>Application Status Updates</h4>
+                    <p>Receive real-time notifications when recruiters view your status.</p>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-toggle-row">
+                  <div class="toggle-info">
+                    <h4>Marketing & Newsletters</h4>
+                    <p>Stay updated with career tips and platform updates.</p>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+      </div>
+      
+    </div>
+</body>
+</html>

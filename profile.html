@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+     <style>
+        :root {
+  --bg-color: #f5f6fa;
+  --card-bg: #ffffff;
+  --primary: #5200ff;
+  --primary-light: #f0ebff;
+  --text-dark: #1e1e2f;
+  --text-muted: #6c757d;
+  --border-color: #eef0f5;
+  --success: #10b981;
+    }
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body{
+        display: flex;
+        height: 100vh;
+        background: #e4d9ee;
+        justify-content: center;
+       position: fixed;
+       width: 100%;
+      }
+      .dashboard{
+        display: flex;
+        width: 100%;
+        
+      }
+      .dashboard-left{
+        width: 19%;
+       background:linear-gradient(55deg,rgb(11, 3, 28),rgb(22, 15, 85),rgb(13, 4, 49));
+       display: flex;
+       flex-direction: column;
+       padding: 10px;
+       position: relative;
+       gap:10px;
+       border-radius: 5px;
+       color: #fff;
+       height: 100%;
+      }
+      .das-one{
+    width: 100%;
+      }
+    .logo{
+     display: flex;
+     flex-direction: column;
+       width: 100%;
+      }
+      .logo-one{
+        display: flex;
+        font-size: 15px;
+      }
+      .logo-one h1{
+        font-weight: bold;
+      }
+      .logo-one .color{
+        color: rgb(92, 43, 226);
+      }
+      .logo p{
+        font-weight:500;
+        font-size: 15px;
+      }
+      .das-two{
+      display: flex;
+      gap: 10px;
+      position: relative;
+      align-items: center;
+      }
+      .das-two span{
+        font-size: 80px;
+      }
+      .das-two::before{
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        background: rgb(11, 227, 43);
+        right: 70%;
+        bottom: 25%;
+        border-radius: 50%;
+      }
+      .pro-info{
+        display: flex;
+        flex-direction: column;
+      }
+      .pro-info h3{
+        font-size: 15px;
+        color: plum;
+      }
+      .das-three{
+        display: flex;
+        flex-direction: column; 
+        gap:5px;
+        border-bottom: 2px solid #7e78be;
+        overflow-y: auto;
+        height: 53%;
+        width: 104%;
+      }
+      .icon.a{
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        background: rgb(104, 16, 255);
+        border-radius: 5px;
+        border-left: 6px solid rgb(255, 149, 255);
+      }
+      .icon icon.b:checked ~ .icon.a{
+        transform: translateY(calc(60px*1));
+      }
+      .icon{
+         display: flex;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 5px;
+       align-items: center;
+       margin-bottom: 5px;
+      }
+      .icon span{
+        font-size: 28px;
+      }
+      .icon h3{
+        font-size: 15px;
+        font-weight: 100;
+      }
+      .icon.a h3,.icon.a span{
+        color:#fff;
+      }
+      .icon{
+        text-decoration: none;
+        color: #7e78be;
+      }
+      .icon:hover{
+      background: rgba(104, 99, 114, 0.499);
+      color: #fff;
+      }
+      .icon.a:hover{
+     background: rgb(104, 16, 255);
+      }
+      .pre{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 22%;
+        padding: 5px;
+        background: #7e78be2b;
+        border-radius: 10px;
+        gap: 10px;
+        border: 1px solid #7e78be58;
+      }
+      .pro-icon{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        justify-content: center;
+      }
+      .pro-icon span{
+        font-size: 30px;
+        color: rgb(255, 191, 43);
+      }
+      .pro-icon h3{
+        font-size: 18px;
+      }
+      .pre p{
+        font-size: 13px;
+        text-align: center;
+        color: burlywood;
+      }
+      .pre button{
+        padding: 12px;
+        border-radius: 10px;
+        width: 100%;
+         font-size: 16px;
+         font-weight: bold;
+         color: #fff;
+         background: linear-gradient(55deg,#3927fe,#7e78be);
+         border: none;
+      }
+      .right{
+        display: flex;
+        position:relative;
+        flex-direction: column;
+        overflow-y: auto;
+        width: 100%;
+      }
+      .right-one{
+        display: flex;
+        background-color: #fff;
+        justify-content: space-between;
+        position: fixed;
+        width: 84%;
+         z-index: 5;
+      }
+        .search{
+          display: flex;
+          position: relative;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+        }
+        .search input{
+          padding: 10px 30px;
+          width: 430px;
+          border-radius: 5px;
+          border: 1px solid #3927fe;
+        }
+        .search span{
+          display: flex;
+          position: absolute;
+          left: 20px;
+          font-size: 20px;
+        }
+        .message{
+          display: flex;
+          width: 300px;
+          justify-content:space-evenly;
+          align-items: center;
+        }
+        .search-two{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+        .search-one{
+          display: flex;
+          gap: 20px;
+        }
+        .search-one span{
+          font-size: 23px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:5px;
+        }
+        .search-two span{
+          font-size: 27px;
+        }
+        .sp-one{
+          position: relative;
+        }
+        .sp-one::before{
+          content: '';
+          position: absolute;
+          width: 8px;
+          right: 6px;
+          top: 8px;
+          height: 8px;
+          background: red;
+          border-radius:50%;
+        }
+        .search-one span:hover{
+          background: #7e78be92;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:5px;
+          border-radius: 50%;
+        }
+
+              .main-content {
+  padding: 24px 32px;
+  margin-top: 40px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.page-header p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.card-header, .card-header-simple {
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  justify-content: space-between;
+}
+
+.card-action {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+
+.grid-container {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.grid-top {
+  grid-template-columns: 1fr 1.2fr 0.9fr;
+}
+
+.grid-bottom {
+  grid-template-columns: 1.4fr 1fr;
+}
+
+
+.profile-details {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.large-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.badge {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: var(--primary);
+}
+
+.btn-secondary {
+  width: 100%;
+  background: var(--primary-light);
+  color: var(--primary);
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.gauge-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gauge-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: conic-gradient(var(--primary) 75%, #e9ecef 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px auto;
+  position: relative;
+}
+
+.gauge-circle::before {
+  content: '';
+  position: absolute;
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: white;
+}
+
+.gauge-value {
+  position: relative;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.gauge-label {
+  color: var(--success);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.gauge-subtext {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-list li {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-list li.done {
+  color: var(--text-dark);
+}
+
+.task-list li.done i {
+  color: var(--success);
+}
+
+
+.exp-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 12px 0;
+  position: relative;
+}
+
+.exp-icon {
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.exp-details h4 {
+  margin: 0 0 4px 0;
+  font-size: 15px;
+}
+
+.company {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.exp-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.duration-badge {
+  margin-left: auto;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.link-btn {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+
+.resume-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resume-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.resume-info i {
+  font-size: 24px;
+  color: var(--primary);
+}
+
+.btn-outline {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background: transparent;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-icon {
+  border: 1px solid var(--border-color);
+  background: transparent;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+    .margin-top {
+     margin-top: 24px;
+     }
+     .margin-top-sm {
+         margin-top: 12px;
+         }
+      .text-center {
+         text-align: center; 
+        }
+  .person{
+    font-size: 55px;
+  }       
+  a{
+    text-decoration: none;
+  }
+     </style>
+</head>
+<body>
+    <div class="dashboard">
+
+      <div class="dashboard-left">
+        <div class="das-one">
+            <div class="logo">
+                <div class="logo-one">
+                   <h1 >SkillMatch</h1>
+                   <h1 class="color">AI</h1>
+                </div>
+                    <p>Smart Job Finder</p>
+              </div>
+        </div>
+          
+        <div class="das-two">
+            <div class="profile">
+                <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+            <div class="pro-info">
+                <h2>Hello, Kaja!</h2>
+                <h3>Job Seeker</h3>
+            </div>
+        </div>
+
+        <div class="das-three">
+             <a href="dashboard.html">
+            <div class="icon">
+                <span><i class='bx bxs-dashboard'></i></span>
+                <h3>Dashboard</h3></div>
+                </a>
+                <a href="profile.html">
+             <div class="icon a" id="user">
+                <span ><i class='bx bxs-user'></i></span>
+                <h3>Profile</h3> </div>
+                </a>
+                <a href="resume.html">
+             <div class="icon">
+                <span><i class='bx bxs-file'></i></span>
+                <h3>Resume Builder</h3> </div>
+                </a>
+                <a href="resumeana.html">
+             <div class="icon">
+                <span><i class='bx bxs-pie-chart-alt-2'></i></span>
+                <h3>Resume Analysis</h3> </div>
+                </a>
+                <a href="find.html">
+             <div class="icon">
+                <span><i class='bx bxs-briefcase-alt-2'></i></span>
+                <h3>Find Jobs</h3> </div>
+                </a>
+                <a href="recommend.html">
+             <div class="icon">
+                <span><i class='bx bxs-star'></i></span>
+                <h3>Recommended Jobs</h3> </div>
+                </a>
+                <a href="skill.html">
+             <div class="icon">
+                <span><i class='bx bx-line-chart'></i></span>
+                <h3>Skill Gap Analysis</h3> </div>
+                </a>
+                <a href="saved.html">
+             <div class="icon">
+                <span><i class='bx bxs-bookmark'></i></span>
+                <h3>Saved Jobs</h3> </div>
+                </a>
+                <a href="application.html">
+                <div class="icon">
+                <span><i class='bx bxs-file'></i></span>
+                <h3>Application</h3> </div>
+                </a>
+                <a href="resourse.html">
+                <div class="icon">
+                <span><i class='bx bxs-food-menu'></i></span>
+                <h3>Resources</h3> </div>
+                </a>
+                <a href="settings.html">
+             <div class="icon">
+                <span><i class='bx bxs-cog'></i></span>
+                <h3>Settings</h3> </div>
+                </a>
+
+        </div>
+
+          <div class="pre">
+            <div class="pro-icon">
+                <span><i class='bx bxs-user-circle'></i></span>
+                <h3>Upgrade to Pro</h3>
+            </div>
+            <p>Access advanced features</p>
+            <div class="pro-but">
+                <button>Upgrade Now</button>
+            </div>
+          </div>
+
+      </div>
+         
+
+      <div class="right">
+          
+        <div class="right-one">
+          <div class="search">
+            <input  type="text" placeholder="Search for jobs, skills or companies....." >
+            <span><i class='bx bx-search'></i></span>
+          </div>
+          <div class="message">
+            <div class="search-one">
+            <span class="sp-one"><i class='bx bx-bell'></i></span>
+            <span class="sp-two"><i class='bx bx-message'></i></span>
+            </div>
+            <div class="search-two">
+              <h2>Kaja</h2>
+              <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+          </div>
+        </div>
+                 <main class="main-content">
+ 
+  <header class="page-header">
+    <div>
+      <h1>My Profile</h1>
+      <p>Manage your personal information, skills and experience.</p>
+    </div>
+    <button class="btn btn-primary"><i class="ph ph-note-pencil"></i> Edit Profile</button>
+  </header>
+
+ 
+  <div class="grid-container grid-top">
+    
+    <div class="card profile-info-card">
+      <div class="card-header-simple">
+        <i class="ph ph-user"></i> Personal Information
+      </div>
+      <div class="profile-details">
+       <span class="person"><i class='bx bxs-user-circle'></i></span>
+        <div class="user-meta">
+          <h3>Kaja</h3>
+          <span class="badge"><i class="ph ph-briefcase"></i> Job Seeker</span>
+          <p class="bio">Passionate about Data Science and AI</p>
+        </div>
+      </div>
+      <ul class="contact-list">
+        <li><i class="ph ph-envelope"></i> kaja@example.com</li>
+        <li><i class="ph ph-phone"></i> +91 98765 43210</li>
+        <li><i class="ph ph-map-pin"></i> Bangalore, India</li>
+        <li><i class="ph ph-calendar-blank"></i> Joined on May 15, 2024</li>
+      </ul>
+    </div>
+
+    
+    <div class="card">
+      <div class="card-header">
+        <span><i class="ph ph-code"></i>Skills</span>
+        <a href="#" class="card-action">+ Add Skills</a>
+      </div>
+      <div class="skills-list">
+        <div class="skill-item">
+          <div class="skill-info"><span>Python</span><span>90%</span></div>
+          <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info"><span>Machine Learning</span><span>85%</span></div>
+          <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info"><span>SQL</span><span>80%</span></div>
+          <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info"><span>Data Analysis</span><span>75%</span></div>
+          <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-info"><span>Communication</span><span>70%</span></div>
+          <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
+        </div>
+      </div>
+      <button class="btn-secondary full-width">View all skills</button>
+    </div>
+
+    <!-- Profile Strength Card -->
+    <div class="card profile-strength-card">
+      <div class="card-header-simple">
+        <i class="ph ph-chart-line-up"></i> Profile Strength
+      </div>
+      <div class="gauge-container">
+        <div class="gauge-circle">
+          <span class="gauge-value">75%</span>
+        </div>
+        <span class="gauge-label">Good Job!</span>
+        <p class="gauge-subtext">Complete the following to improve your profile strength.</p>
+      </div>
+      <ul class="task-list">
+        <li class="done"><i class="ph-fill ph-check-circle"></i> Add your education</li>
+        <li class="done"><i class="ph-fill ph-check-circle"></i> Add work experience</li>
+        <li class="done"><i class="ph-fill ph-check-circle"></i> Add skills</li>
+        <li><i class="ph ph-circle"></i> Upload resume</li>
+        <li><i class="ph ph-circle"></i> Take skill test</li>
+      </ul>
+    </div>
+  </div>
+
+ 
+  <div class="grid-container grid-bottom">
+   
+    <div class="col-left">
+     
+      <div class="card">
+        <div class="card-header">
+          <span>Work Experience</span>
+          <a href="#" class="card-action">+ Add Experience</a>
+        </div>
+        <div class="experience-list">
+          <div class="exp-item">
+            <div class="exp-icon"><i class='bx bxs-buildings'></i></div>
+            <div class="exp-details">
+              <h4>Data Analyst</h4>
+              <p class="company">Tech Solutions Pvt. Ltd.</p>
+              <div class="exp-meta">
+                <span><i class="ph ph-calendar"></i> Jan 2023 - Present</span>
+                <span><i class="ph ph-map-pin"></i> Bangalore, India</span>
+              </div>
+            </div>
+            <span class="duration-badge">1.5 yrs</span>
+          </div>
+          <div class="exp-item">
+            <div class="exp-icon"><i class='bx bxs-buildings'></i></div>
+            <div class="exp-details">
+              <h4>Junior Data Analyst</h4>
+              <p class="company">Innova Analytics</p>
+              <div class="exp-meta">
+                <span><i class="ph ph-calendar"></i> Jun 2021 - Dec 2022</span>
+                <span><i class="ph ph-map-pin"></i> Bangalore, India</span>
+              </div>
+            </div>
+            <span class="duration-badge">1.6 yrs</span>
+          </div>
+        </div>
+        <div class="text-center"><a href="#" class="link-btn">View all experience</a></div>
+      </div>
+
+      
+      <div class="card margin-top">
+        <div class="card-header-simple"><i class="ph ph-heart"></i> Interests</div>
+        <div class="tags-container">
+          <span class="tag">Data Science</span>
+          <span class="tag">AI & ML</span>
+          <span class="tag">Problem Solving</span>
+          <span class="tag">Open Source</span>
+          <span class="tag">Reading</span>
+          <span class="tag">Technology</span>
+          <span class="tag">Statistical Analysis</span>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="col-right">
+     
+      <div class="card">
+        <div class="card-header">
+          <span><i class='bx bxs-graduation'></i> Education</span>
+          <a href="#" class="card-action">+ Add Education</a>
+        </div>
+        <div class="exp-item">
+          <div class="exp-icon"><i class='bx bxs-graduation'></i></div>
+          <div class="exp-details">
+            <h4>B.Tech in Computer Science</h4>
+            <p class="company">University of Bangalore</p>
+            <div class="exp-meta">
+              <span><i class="ph ph-calendar"></i> 2017 - 2021</span>
+            </div>
+          </div>
+          <span class="duration-badge">8.2 CGPA</span>
+        </div>
+        <div class="text-center margin-top-sm"><a href="#" class="link-btn">View all education</a></div>
+      </div>
+
+      <!-- Resume -->
+      <div class="card margin-top">
+        <div class="card-header-simple"><i class="ph ph-file-text"></i> Resume</div>
+        <div class="resume-box">
+          <div class="resume-info">
+            <i class="ph ph-file-pdf"></i>
+            <div>
+              <strong>Kaja_Resume.pdf</strong>
+              <p>Uploaded on May 20, 2024</p>
+            </div>
+          </div>
+          <div class="resume-actions">
+            <button class="btn-outline">View Resume</button>
+            <button class="btn-icon"><i class="ph ph-download-simple"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+        
+
+      </div>
+      
+    </div>
+</body>
+</html>

@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+     <style>
+        :root {
+  --bg-color: #f5f6fa;
+  --card-bg: #ffffff;
+  --primary: #5200ff;
+  --primary-light: #f0ebff;
+  --text-dark: #1e1e2f;
+  --text-muted: #6c757d;
+  --border-color: #eef0f5;
+  --success: #10b981;
+    }
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body{
+        display: flex;
+        height: 100vh;
+        background: #e4d9ee;
+        justify-content: center;
+       position: fixed;
+       width: 100%;
+      }
+      .dashboard{
+        display: flex;
+        width: 100%;
+        
+      }
+      .dashboard-left{
+        width: 19%;
+       background:linear-gradient(55deg,rgb(11, 3, 28),rgb(22, 15, 85),rgb(13, 4, 49));
+       display: flex;
+       flex-direction: column;
+       padding: 10px;
+       position: relative;
+       gap:10px;
+       border-radius: 5px;
+       color: #fff;
+       height: 100%;
+      }
+      .das-one{
+    width: 100%;
+      }
+    .logo{
+     display: flex;
+     flex-direction: column;
+       width: 100%;
+      }
+      .logo-one{
+        display: flex;
+        font-size: 15px;
+      }
+      .logo-one h1{
+        font-weight: bold;
+      }
+      .logo-one .color{
+        color: rgb(92, 43, 226);
+      }
+      .logo p{
+        font-weight:500;
+        font-size: 15px;
+      }
+      .das-two{
+      display: flex;
+      gap: 10px;
+      position: relative;
+      align-items: center;
+      }
+      .das-two span{
+        font-size: 80px;
+      }
+      .das-two::before{
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        background: rgb(11, 227, 43);
+        right: 70%;
+        bottom: 25%;
+        border-radius: 50%;
+      }
+      .pro-info{
+        display: flex;
+        flex-direction: column;
+      }
+      .pro-info h3{
+        font-size: 15px;
+        color: plum;
+      }
+      .das-three{
+        display: flex;
+        flex-direction: column; 
+        gap:5px;
+        border-bottom: 2px solid #7e78be;
+        overflow-y: auto;
+        height: 53%;
+        width: 104%;
+      }
+      .icon.a{
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        background: rgb(104, 16, 255);
+        border-radius: 5px;
+        border-left: 6px solid rgb(255, 149, 255);
+      }
+      .icon icon.b:checked ~ .icon.a{
+        transform: translateY(calc(60px*1));
+      }
+      .icon{
+         display: flex;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 5px;
+       align-items: center;
+       margin-bottom: 5px;
+      }
+      .icon span{
+        font-size: 28px;
+      }
+      .icon h3{
+        font-size: 15px;
+        font-weight: 100;
+      }
+      .icon.a h3,.icon.a span{
+        color:#fff;
+      }
+      .icon{
+        text-decoration: none;
+        color: #7e78be;
+      }
+      .icon:hover{
+      background: rgba(104, 99, 114, 0.499);
+      color: #fff;
+      }
+      .icon.a:hover{
+     background: rgb(104, 16, 255);
+      }
+      .pre{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 22%;
+        padding: 5px;
+        background: #7e78be2b;
+        border-radius: 10px;
+        gap: 10px;
+        border: 1px solid #7e78be58;
+      }
+      .pro-icon{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        justify-content: center;
+      }
+      .pro-icon span{
+        font-size: 30px;
+        color: rgb(255, 191, 43);
+      }
+      .pro-icon h3{
+        font-size: 18px;
+      }
+      .pre p{
+        font-size: 13px;
+        text-align: center;
+        color: burlywood;
+      }
+      .pre button{
+        padding: 12px;
+        border-radius: 10px;
+        width: 100%;
+         font-size: 16px;
+         font-weight: bold;
+         color: #fff;
+         background: linear-gradient(55deg,#3927fe,#7e78be);
+         border: none;
+      }
+      .right{
+        display: flex;
+        position:relative;
+        flex-direction: column;
+        overflow-y: auto;
+        width: 100%;
+      }
+      .right-one{
+        display: flex;
+        background-color: #fff;
+        justify-content: space-between;
+        position: fixed;
+        width: 84%;
+         z-index: 5;
+      }
+        .search{
+          display: flex;
+          position: relative;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+        }
+        .search input{
+          padding: 10px 30px;
+          width: 430px;
+          border-radius: 5px;
+          border: 1px solid #3927fe;
+        }
+        .search span{
+          display: flex;
+          position: absolute;
+          left: 20px;
+          font-size: 20px;
+        }
+        .message{
+          display: flex;
+          width: 300px;
+          justify-content:space-evenly;
+          align-items: center;
+        }
+        .search-two{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+        .search-one{
+          display: flex;
+          gap: 20px;
+        }
+        .search-one span{
+          font-size: 23px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:5px;
+        }
+        .search-two span{
+          font-size: 27px;
+        }
+        .sp-one{
+          position: relative;
+        }
+        .sp-one::before{
+          content: '';
+          position: absolute;
+          width: 8px;
+          right: 6px;
+          top: 8px;
+          height: 8px;
+          background: red;
+          border-radius:50%;
+        }
+        .search-one span:hover{
+          background: #7e78be92;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:5px;
+          border-radius: 50%;
+        }
+  .person{
+    font-size: 55px;
+  }       
+  a{
+    text-decoration: none;
+  }
+  .main-content {
+  flex: 1;
+  padding: 24px 32px;
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1e293b;
+  margin-top: 50px;
+}
+
+.header-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-text h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.header-text p {
+  color: #64748b;
+  font-size: 13px;
+  margin: 4px 0 0 0;
+}
+
+.btn-export {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.metric-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.metric-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.metric-icon.purple { background: #f3e8ff; }
+.metric-icon.blue { background: #e0f2fe; }
+.metric-icon.purple-light { background: #ede9fe; }
+.metric-icon.red { background: #ffe4e6; }
+
+.metric-info .value { font-size: 20px; font-weight: 700; line-height: 1.2; }
+.metric-info .label { font-size: 11px; color: #64748b; }
+
+.dashboard-body {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 20px;
+}
+
+.inner-filter-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.search-input {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  outline: none;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-controls select {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #475569;
+  outline: none;
+}
+
+.job-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.job-select {
+  accent-color: #4f46e5;
+  cursor: pointer;
+}
+
+.company-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  background: #f1f5f9;
+}
+
+.job-details { flex: 1; }
+.job-header h3 { font-size: 14px; margin: 0; }
+.company-name { font-size: 12px; color: #475569; margin: 2px 0 6px 0; }
+.job-meta { font-size: 11px; color: #64748b; margin-bottom: 8px; display: flex; gap: 6px; }
+
+.tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.tags span {
+  background: #eff6ff;
+  color: #3b82f6;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.job-meta-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  margin: 0 12px;
+}
+
+.match-badge {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.match-badge.green { background: #dcfce7; color: #15803d; }
+.match-badge.green-light { background: #f0fdf4; color: #16a34a; }
+
+.posted-time { font-size: 10px; color: #94a3b8; }
+
+.job-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-details {
+  background: #4338ca;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 5px 8px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.page-num, .page-nav {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-num.active {
+  background: #4f46e5;
+  color: white;
+  border-color: #4f46e5;
+}
+
+.dots { color: #94a3b8; font-size: 11px; }
+
+.filter-sidebar {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.filter-sidebar h4 { margin: 0 0 16px 0; font-size: 13px; }
+
+.filter-group { margin-bottom: 16px; }
+.filter-group h5 { margin: 0 0 8px 0; font-size: 11px; color: #1e293b; }
+.filter-group label {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  color: #475569;
+  margin-bottom: 6px;
+  gap: 6px;
+  cursor: pointer;
+}
+.filter-group label span { color: #94a3b8; font-size: 10px; }
+.filter-group input[type="checkbox"] { accent-color: #4f46e5; }
+
+.btn-clear-filters {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  color: #475569;
+  cursor: pointer;
+}
+
+.tip-card {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 14px;
+}
+.tip-card h4 { margin: 0 0 6px 0; font-size: 12px; color: #166534; }
+.tip-card p { margin: 0; font-size: 11px; color: #15803d; line-height: 1.4; }
+     </style>
+</head>
+<body>
+    <div class="dashboard">
+
+      <div class="dashboard-left">
+        <div class="das-one">
+            <div class="logo">
+                <div class="logo-one">
+                   <h1 >SkillMatch</h1>
+                   <h1 class="color">AI</h1>
+                </div>
+                    <p>Smart Job Finder</p>
+              </div>
+        </div>
+          
+        <div class="das-two">
+            <div class="profile">
+                <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+            <div class="pro-info">
+                <h2>Hello, Kaja!</h2>
+                <h3>Job Seeker</h3>
+            </div>
+        </div>
+
+        <div class="das-three">
+             <a href="dashboard.html">
+            <div class="icon">
+                <span><i class='bx bxs-dashboard'></i></span>
+                <h3>Dashboard</h3></div>
+                </a>
+                <a href="profile.html">
+             <div class="icon" id="user">
+                <span ><i class='bx bxs-user'></i></span>
+                <h3>Profile</h3> </div>
+                </a>
+                <a href="resume.html">
+             <div class="icon">
+                <span><i class='bx bxs-file'></i></span>
+                <h3>Resume Builder</h3> </div>
+                </a>
+                <a href="resumeana.html">
+             <div class="icon">
+                <span><i class='bx bxs-pie-chart-alt-2'></i></span>
+                <h3>Resume Analysis</h3> </div>
+                </a>
+                <a href="find.html">
+             <div class="icon">
+                <span><i class='bx bxs-briefcase-alt-2'></i></span>
+                <h3>Find Jobs</h3> </div>
+                </a>
+                <a href="recommend.html">
+             <div class="icon">
+                <span><i class='bx bxs-star'></i></span>
+                <h3>Recommended Jobs</h3> </div>
+                </a>
+                <a href="skill.html">
+             <div class="icon">
+                <span><i class='bx bx-line-chart'></i></span>
+                <h3>Skill Gap Analysis</h3> </div>
+                </a>
+                <a href="saved.html">
+             <div class="icon a">
+                <span><i class='bx bxs-bookmark'></i></span>
+                <h3>Saved Jobs</h3> </div>
+                </a>
+                <a href="application.html">
+                <div class="icon">
+                <span><i class='bx bxs-file'></i></span>
+                <h3>Application</h3> </div>
+                </a>
+                <a href="resourse.html">
+                <div class="icon">
+                <span><i class='bx bxs-food-menu'></i></span>
+                <h3>Resources</h3> </div>
+                </a>
+                <a href="settings.html">
+             <div class="icon">
+                <span><i class='bx bxs-cog'></i></span>
+                <h3>Settings</h3> </div>
+                </a>
+
+        </div>
+
+          <div class="pre">
+            <div class="pro-icon">
+                <span><i class='bx bxs-user-circle'></i></span>
+                <h3>Upgrade to Pro</h3>
+            </div>
+            <p>Access advanced features</p>
+            <div class="pro-but">
+                <button>Upgrade Now</button>
+            </div>
+          </div>
+
+      </div>
+         
+
+      <div class="right">
+          
+        <div class="right-one">
+          <div class="search">
+            <input  type="text" placeholder="Search for jobs, skills or companies....." >
+            <span><i class='bx bx-search'></i></span>
+          </div>
+          <div class="message">
+            <div class="search-one">
+            <span class="sp-one"><i class='bx bx-bell'></i></span>
+            <span class="sp-two"><i class='bx bx-message'></i></span>
+            </div>
+            <div class="search-two">
+              <h2>Kaja</h2>
+              <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+          </div>
+        </div>
+              
+        <main class="main-content">
+  <div class="header-banner">
+    <div class="header-text">
+      <h1>Saved Jobs</h1>
+      <p>Jobs you've saved for later. Keep track of your favorite opportunities here.</p>
+    </div>
+    <button class="btn-export">📥 Export Saved Jobs</button>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-icon purple">🔖</div>
+      <div class="metric-info">
+        <div class="value">8</div>
+        <span class="label">Saved Jobs</span>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon blue">🕒</div>
+      <div class="metric-info">
+        <div class="value">4</div>
+        <span class="label">Recently Saved</span>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon purple-light">💼</div>
+      <div class="metric-info">
+        <div class="value">3</div>
+        <span class="label">Companies</span>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon red">🎯</div>
+      <div class="metric-info">
+        <div class="value">92%</div>
+        <span class="label">Avg. Match Score</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-body">
+    <div class="left-column">
+      <div class="inner-filter-bar">
+        <input type="text" placeholder="Search saved jobs..." class="search-input">
+        <div class="filter-controls">
+          <select><option>All Job Types</option></select>
+          <select><option>↕ Newest First</option></select>
+        </div>
+      </div>
+
+      <div class="job-list">
+        <div class="job-card">
+          <input type="checkbox" class="job-select">
+          <div class="company-logo google">G</div>
+          <div class="job-details">
+            <div class="job-header">
+              <h3>Data Scientist</h3>
+            </div>
+            <p class="company-name">Google ✔</p>
+            <div class="job-meta">
+              <span>📍 Bangalore, India</span>
+              <span>• Hybrid</span>
+            </div>
+            <div class="tags">
+              <span>Python</span><span>Machine Learning</span><span>SQL</span><span>Data Analysis</span><span>Statistics</span>
+            </div>
+          </div>
+          <div class="job-meta-right">
+            <span class="match-badge green">95% Match</span>
+            <span class="posted-time">Posted 2 days ago</span>
+          </div>
+          <div class="job-actions">
+            <button class="btn-details">View Details ↗</button>
+            <button class="btn-delete">🗑️</button>
+          </div>
+        </div>
+
+        <div class="job-card">
+          <input type="checkbox" class="job-select">
+          <div class="company-logo msft">田</div>
+          <div class="job-details">
+            <div class="job-header">
+              <h3>ML Engineer</h3>
+            </div>
+            <p class="company-name">Microsoft ✔</p>
+            <div class="job-meta">
+              <span>📍 Hyderabad, India</span>
+              <span>• Hybrid</span>
+            </div>
+            <div class="tags">
+              <span>Python</span><span>TensorFlow</span><span>Deep Learning</span><span>AI</span><span>Problem Solving</span>
+            </div>
+          </div>
+          <div class="job-meta-right">
+            <span class="match-badge green">88% Match</span>
+            <span class="posted-time">Posted 4 days ago</span>
+          </div>
+          <div class="job-actions">
+            <button class="btn-details">View Details ↗</button>
+            <button class="btn-delete">🗑️</button>
+          </div>
+        </div>
+
+        <div class="job-card">
+          <input type="checkbox" class="job-select">
+          <div class="company-logo amazon">a</div>
+          <div class="job-details">
+            <div class="job-header">
+              <h3>Data Analyst</h3>
+            </div>
+            <p class="company-name">Amazon ✔</p>
+            <div class="job-meta">
+              <span>📍 Pune, India</span>
+              <span>• On-site</span>
+            </div>
+            <div class="tags">
+              <span>SQL</span><span>Excel</span><span>Data Analysis</span><span>Communication</span><span>Problem Solving</span>
+            </div>
+          </div>
+          <div class="job-meta-right">
+            <span class="match-badge green">82% Match</span>
+            <span class="posted-time">Posted 5 days ago</span>
+          </div>
+          <div class="job-actions">
+            <button class="btn-details">View Details ↗</button>
+            <button class="btn-delete">🗑️</button>
+          </div>
+        </div>
+
+        <div class="job-card">
+          <input type="checkbox" class="job-select">
+          <div class="company-logo tcs">tcs</div>
+          <div class="job-details">
+            <div class="job-header">
+              <h3>Business Intelligence Analyst</h3>
+            </div>
+            <p class="company-name">Tata Consultancy Services (TCS) ✔</p>
+            <div class="job-meta">
+              <span>📍 Bangalore, India</span>
+              <span>• Hybrid</span>
+            </div>
+            <div class="tags">
+              <span>SQL</span><span>Data Visualization</span><span>Excel</span><span>Analytics</span><span>Communication</span>
+            </div>
+          </div>
+          <div class="job-meta-right">
+            <span class="match-badge green-light">78% Match</span>
+            <span class="posted-time">Posted 6 days ago</span>
+          </div>
+          <div class="job-actions">
+            <button class="btn-details">View Details ↗</button>
+            <button class="btn-delete">🗑️</button>
+          </div>
+        </div>
+
+        <div class="job-card">
+          <input type="checkbox" class="job-select">
+          <div class="company-logo infosys">Infosys</div>
+          <div class="job-details">
+            <div class="job-header">
+              <h3>Data Engineer</h3>
+            </div>
+            <p class="company-name">Infosys ✔</p>
+            <div class="job-meta">
+              <span>📍 Chennai, India</span>
+              <span>• Hybrid</span>
+            </div>
+            <div class="tags">
+              <span>Python</span><span>Spark</span><span>ETL</span><span>Big Data</span><span>Problem Solving</span>
+            </div>
+          </div>
+          <div class="job-meta-right">
+            <span class="match-badge green-light">75% Match</span>
+            <span class="posted-time">Posted 1 week ago</span>
+          </div>
+          <div class="job-actions">
+            <button class="btn-details">View Details ↗</button>
+            <button class="btn-delete">🗑️</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <button class="page-nav">&lt;</button>
+        <button class="page-num active">1</button>
+        <button class="page-num">2</button>
+        <button class="page-num">3</button>
+        <button class="page-num">4</button>
+        <button class="page-num">5</button>
+        <span class="dots">...</span>
+        <button class="page-nav">&gt;</button>
+      </div>
+    </div>
+
+    <div class="right-column">
+      <div class="filter-sidebar">
+        <h4>⚙️ Filter Saved Jobs</h4>
+
+        <div class="filter-group">
+          <h5>Job Type</h5>
+          <label><input type="checkbox" checked> Full Time <span>(5)</span></label>
+          <label><input type="checkbox"> Part Time <span>(1)</span></label>
+          <label><input type="checkbox"> Internship <span>(1)</span></label>
+          <label><input type="checkbox"> Contract <span>(1)</span></label>
+        </div>
+
+        <div class="filter-group">
+          <h5>Experience Level</h5>
+          <label><input type="checkbox"> Entry Level <span>(2)</span></label>
+          <label><input type="checkbox" checked> Mid Level <span>(4)</span></label>
+          <label><input type="checkbox"> Senior Level <span>(2)</span></label>
+        </div>
+
+        <div class="filter-group">
+          <h5>Location</h5>
+          <label><input type="checkbox" checked> Bangalore <span>(3)</span></label>
+          <label><input type="checkbox"> Hyderabad <span>(2)</span></label>
+          <label><input type="checkbox"> Pune <span>(1)</span></label>
+          <label><input type="checkbox"> Chennai <span>(1)</span></label>
+          <label><input type="checkbox"> Remote <span>(1)</span></label>
+        </div>
+
+        <div class="filter-group">
+          <h5>Company</h5>
+          <label><input type="checkbox" checked> Google <span>(1)</span></label>
+          <label><input type="checkbox"> Microsoft <span>(1)</span></label>
+          <label><input type="checkbox"> Amazon <span>(1)</span></label>
+          <label><input type="checkbox"> TCS <span>(1)</span></label>
+          <label><input type="checkbox"> Infosys <span>(1)</span></label>
+        </div>
+
+        <button class="btn-clear-filters">⚙ Clear Filters</button>
+      </div>
+
+      <div class="tip-card">
+        <h4>💡 Quick Tip</h4>
+        <p>Save jobs you like and come back later to apply. Increase your chances by completing your profile!</p>
+      </div>
+    </div>
+  </div>
+</main>
+        
+
+      </div>
+      
+    </div>
+</body>
+</html>

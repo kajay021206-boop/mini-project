@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+     <style>
+        :root {
+  --bg-color: #f5f6fa;
+  --card-bg: #ffffff;
+  --primary: #5200ff;
+  --primary-light: #f0ebff;
+  --text-dark: #1e1e2f;
+  --text-muted: #6c757d;
+  --border-color: #eef0f5;
+  --success: #10b981;
+    }
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body{
+        display: flex;
+        height: 100vh;
+        background: #e4d9ee;
+        justify-content: center;
+       position: fixed;
+       width: 100%;
+      }
+      .dashboard{
+        display: flex;
+        width: 100%;
+        
+      }
+      .dashboard-left{
+        width: 19%;
+       background:linear-gradient(55deg,rgb(11, 3, 28),rgb(22, 15, 85),rgb(13, 4, 49));
+       display: flex;
+       flex-direction: column;
+       padding: 10px;
+       position: relative;
+       gap:10px;
+       border-radius: 5px;
+       color: #fff;
+       height: 100%;
+      }
+      .das-one{
+    width: 100%;
+      }
+    .logo{
+     display: flex;
+     flex-direction: column;
+       width: 100%;
+      }
+      .logo-one{
+        display: flex;
+        font-size: 15px;
+      }
+      .logo-one h1{
+        font-weight: bold;
+      }
+      .logo-one .color{
+        color: rgb(92, 43, 226);
+      }
+      .logo p{
+        font-weight:500;
+        font-size: 15px;
+      }
+      .das-two{
+      display: flex;
+      gap: 10px;
+      position: relative;
+      align-items: center;
+      }
+      .das-two span{
+        font-size: 80px;
+      }
+      .das-two::before{
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        background: rgb(11, 227, 43);
+        right: 70%;
+        bottom: 25%;
+        border-radius: 50%;
+      }
+      .pro-info{
+        display: flex;
+        flex-direction: column;
+      }
+      .pro-info h3{
+        font-size: 15px;
+        color: plum;
+      }
+      .das-three{
+        display: flex;
+        flex-direction: column; 
+        gap:5px;
+        border-bottom: 2px solid #7e78be;
+        overflow-y: auto;
+        height: 53%;
+        width: 104%;
+      }
+      .icon.a{
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        background: rgb(104, 16, 255);
+        border-radius: 5px;
+        border-left: 6px solid rgb(255, 149, 255);
+      }
+      .icon icon.b:checked ~ .icon.a{
+        transform: translateY(calc(60px*1));
+      }
+      .icon{
+         display: flex;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 5px;
+       align-items: center;
+       margin-bottom: 5px;
+      }
+      .icon span{
+        font-size: 28px;
+      }
+      .icon h3{
+        font-size: 15px;
+        font-weight: 100;
+      }
+      .icon.a h3,.icon.a span{
+        color:#fff;
+      }
+      .icon{
+        text-decoration: none;
+        color: #7e78be;
+      }
+      .icon:hover{
+      background: rgba(104, 99, 114, 0.499);
+      color: #fff;
+      }
+      .icon.a:hover{
+     background: rgb(104, 16, 255);
+      }
+      .pre{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 22%;
+        padding: 5px;
+        background: #7e78be2b;
+        border-radius: 10px;
+        gap: 10px;
+        border: 1px solid #7e78be58;
+      }
+      .pro-icon{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        justify-content: center;
+      }
+      .pro-icon span{
+        font-size: 30px;
+        color: rgb(255, 191, 43);
+      }
+      .pro-icon h3{
+        font-size: 18px;
+      }
+      .pre p{
+        font-size: 13px;
+        text-align: center;
+        color: burlywood;
+      }
+      .pre button{
+        padding: 12px;
+        border-radius: 10px;
+        width: 100%;
+         font-size: 16px;
+         font-weight: bold;
+         color: #fff;
+         background: linear-gradient(55deg,#3927fe,#7e78be);
+         border: none;
+      }
+      .right{
+        display: flex;
+        position:relative;
+        flex-direction: column;
+        overflow-y: auto;
+        width: 100%;
+      }
+      .right-one{
+        display: flex;
+        background-color: #fff;
+        justify-content: space-between;
+        position: fixed;
+        width: 84%;
+         z-index: 5;
+      }
+        .search{
+          display: flex;
+          position: relative;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+        }
+        .search input{
+          padding: 10px 30px;
+          width: 430px;
+          border-radius: 5px;
+          border: 1px solid #3927fe;
+        }
+        .search span{
+          display: flex;
+          position: absolute;
+          left: 20px;
+          font-size: 20px;
+        }
+        .message{
+          display: flex;
+          width: 300px;
+          justify-content:space-evenly;
+          align-items: center;
+        }
+        .search-two{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+        .search-one{
+          display: flex;
+          gap: 20px;
+        }
+        .search-one span{
+          font-size: 23px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:5px;
+        }
+        .search-two span{
+          font-size: 27px;
+        }
+        .sp-one{
+          position: relative;
+        }
+        .sp-one::before{
+          content: '';
+          position: absolute;
+          width: 8px;
+          right: 6px;
+          top: 8px;
+          height: 8px;
+          background: red;
+          border-radius:50%;
+        }
+        .search-one span:hover{
+          background: #7e78be92;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:5px;
+          border-radius: 50%;
+        }
+  .person{
+    font-size: 55px;
+  }       
+  a{
+    text-decoration: none;
+  }
+  .main-content {
+  flex: 1;
+  padding: 24px 32px;
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1e293b;
+  margin-top: 50px;
+}
+
+.header-banner h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-banner p {
+  color: #64748b;
+  font-size: 14px;
+  margin: 4px 0 20px 0;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.metric-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.metric-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.metric-icon.purple { background: #f3e8ff; }
+.metric-icon.teal { background: #ccfbf1; }
+.metric-icon.blue { background: #e0f2fe; }
+.metric-icon.pink { background: #ffe4e6; }
+
+.metric-info .label { font-size: 12px; color: #64748b; display: block; }
+.metric-info .value { font-size: 22px; font-weight: 700; margin: 2px 0; }
+.metric-info .subtext { font-size: 11px; color: #64748b; }
+.metric-info .subtext.green { color: #16a34a; }
+
+.dashboard-body {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+}
+
+.filter-bar {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.filter-input, .filter-bar select {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  outline: none;
+}
+.filter-input { flex: 2; }
+.filter-bar select { flex: 1; background: #fff; color: #64748b; }
+.btn-clear {
+  background: none;
+  border: none;
+  color: #4f46e5;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.job-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.company-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  background: #f1f5f9;
+}
+
+.job-details { flex: 1; }
+.job-header { display: flex; justify-content: space-between; align-items: center; }
+.job-header h3 { font-size: 16px; margin: 0; display: flex; align-items: center; gap: 8px; }
+
+.badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+.badge.purple { background: #f3e8ff; color: #7e22ce; }
+.badge.teal { background: #ccfbf1; color: #0f766e; }
+
+.posted-time { font-size: 11px; color: #94a3b8; }
+.company-name { font-size: 13px; color: #475569; margin: 4px 0 10px 0; }
+
+.job-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.job-desc { font-size: 12px; color: #475569; margin-bottom: 12px; line-height: 1.4; }
+
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tags span {
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.job-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.match-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 4px solid #10b981;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #047857;
+}
+.match-circle span { font-size: 8px; font-weight: normal; }
+
+.btn-apply {
+  background: #4338ca;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn-bookmark {
+  background: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.promo-card {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.promo-card h3 { margin: 0 0 6px 0; font-size: 16px; }
+.promo-card p { font-size: 12px; opacity: 0.9; margin: 0 0 16px 0; }
+
+.progress-bar {
+  background: rgba(255, 255, 255, 0.2);
+  height: 6px;
+  border-radius: 3px;
+  margin-bottom: 12px;
+}
+.progress { background: #ffffff; height: 100%; border-radius: 3px; }
+
+.promo-footer { display: flex; justify-content: space-between; align-items: center; font-size: 11px; }
+.btn-promo {
+  background: white;
+  color: #4f46e5;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.widget-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.widget-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.widget-header h4 { margin: 0; font-size: 14px; }
+.widget-header a { font-size: 11px; color: #4f46e5; text-decoration: none; }
+
+.widget-list { list-style: none; padding: 0; margin: 0; }
+.widget-list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+.widget-list .count { color: #94a3b8; }
+
+.company-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.company-item {
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
+}
+.company-item .logo { font-size: 18px; margin-bottom: 4px; font-weight: bold; }
+.company-item small { display: block; color: #94a3b8; font-size: 10px; }
+
+.tips-card {
+  background: #fffbe6;
+  border: 1px solid #ffe58f;
+  border-radius: 12px;
+  padding: 16px;
+}
+.tips-card h4 { margin: 0 0 10px 0; font-size: 13px; color: #d48806; }
+.tips-card ul { list-style: none; padding: 0; margin: 0; }
+.tips-card li { font-size: 11px; color: #8c6b00; margin-bottom: 6px; }
+     </style>
+</head>
+<body>
+    <div class="dashboard">
+
+      <div class="dashboard-left">
+        <div class="das-one">
+            <div class="logo">
+                <div class="logo-one">
+                   <h1 >SkillMatch</h1>
+                   <h1 class="color">AI</h1>
+                </div>
+                    <p>Smart Job Finder</p>
+              </div>
+        </div>
+          
+        <div class="das-two">
+            <div class="profile">
+                <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+            <div class="pro-info">
+                <h2>Hello, Kaja!</h2>
+                <h3>Job Seeker</h3>
+            </div>
+        </div>
+
+        <div class="das-three">
+            <a href="dashboard.html">
+            <div class="icon">
+                <span><i class='bx bxs-dashboard'></i></span>
+                <h3>Dashboard</h3></div>
+                </a>
+                <a href="profile.html">
+             <div class="icon" id="user">
+                <span ><i class='bx bxs-user'></i></span>
+                <h3>Profile</h3> </div>
+                </a>
+                <a href="resume.html">
+             <div class="icon">
+                <span><i class='bx bxs-file'></i></span>
+                <h3>Resume Builder</h3> </div>
+                </a>
+                <a href="resumeana.html">
+             <div class="icon">
+                <span><i class='bx bxs-pie-chart-alt-2'></i></span>
+                <h3>Resume Analysis</h3> </div>
+                </a>
+                <a href="find.html">
+             <div class="icon">
+                <span><i class='bx bxs-briefcase-alt-2'></i></span>
+                <h3>Find Jobs</h3> </div>
+                </a>
+                <a href="recommend.html">
+             <div class="icon a">
+                <span><i class='bx bxs-star'></i></span>
+                <h3>Recommended Jobs</h3> </div>
+                </a>
+                <a href="skill.html">
+             <div class="icon">
+                <span><i class='bx bx-line-chart'></i></span>
+                <h3>Skill Gap Analysis</h3> </div>
+                </a>
+                <a href="saved.html">
+             <div class="icon">
+                <span><i class='bx bxs-bookmark'></i></span>
+                <h3>Saved Jobs</h3> </div>
+                </a>
+                <a href="application.html">
+                <div class="icon">
+                <span><i class='bx bxs-file'></i></span>
+                <h3>Application</h3> </div>
+                </a>
+                <a href="resourse.html">
+                <div class="icon">
+                <span><i class='bx bxs-food-menu'></i></span>
+                <h3>Resources</h3> </div>
+                </a>
+                <a href="settings.html">
+             <div class="icon">
+                <span><i class='bx bxs-cog'></i></span>
+                <h3>Settings</h3> </div>
+                </a>
+
+        </div>
+
+          <div class="pre">
+            <div class="pro-icon">
+                <span><i class='bx bxs-user-circle'></i></span>
+                <h3>Upgrade to Pro</h3>
+            </div>
+            <p>Access advanced features</p>
+            <div class="pro-but">
+                <button>Upgrade Now</button>
+            </div>
+          </div>
+
+      </div>
+         
+
+      <div class="right">
+          
+        <div class="right-one">
+          <div class="search">
+            <input  type="text" placeholder="Search for jobs, skills or companies....." >
+            <span><i class='bx bx-search'></i></span>
+          </div>
+          <div class="message">
+            <div class="search-one">
+            <span class="sp-one"><i class='bx bx-bell'></i></span>
+            <span class="sp-two"><i class='bx bx-message'></i></span>
+            </div>
+            <div class="search-two">
+              <h2>Kaja</h2>
+              <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+          </div>
+        </div>
+              
+
+        <!-- HTML CONTENT AREA ONLY -->
+<main class="main-content">
+  <div class="header-banner">
+    <div class="header-text">
+      <h1>Recommended Jobs <span class="sparkle">✨</span></h1>
+      <p>Personalized job recommendations based on your profile, skills and interests.</p>
+    </div>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-icon purple">💼</div>
+      <div class="metric-info">
+        <span class="label">Total Recommended</span>
+        <div class="value">24</div>
+        <span class="subtext green">↑ 12% vs last week</span>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon teal">🎯</div>
+      <div class="metric-info">
+        <span class="label">Best Match</span>
+        <div class="value">95%</div>
+        <span class="subtext">Data Scientist</span>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon blue">🕒</div>
+      <div class="metric-info">
+        <span class="label">New Today</span>
+        <div class="value">8</div>
+        <span class="subtext">fresh opportunities</span>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon pink">💖</div>
+      <div class="metric-info">
+        <span class="label">Saved Jobs</span>
+        <div class="value">5</div>
+        <span class="subtext">in your collection</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-body">
+    <div class="left-column">
+      <div class="filter-bar">
+        <input type="text" placeholder="Job Title, Skills or Company" class="filter-input">
+        <select><option>Location</option></select>
+        <select><option>Job Type</option></select>
+        <select><option>Experience Level</option></select>
+        <button class="btn-clear">Clear Filters</button>
+      </div>
+
+      <div class="job-list">
+        <div class="job-card">
+          <div class="company-logo google">G</div>
+          <div class="job-details">
+            <div class="job-header">
+              <h3>Data Scientist <span class="badge purple">Top Match</span></h3>
+              <span class="posted-time">Posted 2 days ago</span>
+            </div>
+            <p class="company-name">Google ✔</p>
+            <div class="job-meta">
+              <span>📍 Bangalore, India</span>
+              <span>💼 Hybrid</span>
+              <span>💰 ₹18 - ₹28 LPA</span>
+              <span>🧳 2-4 Yrs</span>
+            </div>
+            <p class="job-desc">Analyze large datasets to build machine learning models and derive insights that drive business decisions.</p>
+            <div class="tags">
+              <span>Python</span><span>Machine Learning</span><span>SQL</span><span>Data Analysis</span><span>Statistics</span>
+            </div>
+          </div>
+          <div class="job-action">
+            <div class="match-circle green">95% <span>Match</span></div>
+            <button class="btn-apply">Apply Now ↗</button>
+            <button class="btn-bookmark">🔖</button>
+          </div>
+        </div>
+
+        <div class="job-card">
+          <div class="company-logo msft">田</div>
+          <div class="job-details">
+            <div class="job-header">
+              <h3>Machine Learning Engineer <span class="badge teal">High Match</span></h3>
+              <span class="posted-time">Posted 1 day ago</span>
+            </div>
+            <p class="company-name">Microsoft ✔</p>
+            <div class="job-meta">
+              <span>📍 Hyderabad, India</span>
+              <span>💼 On-site</span>
+              <span>💰 ₹16 - ₹24 LPA</span>
+              <span>🧳 3-5 Yrs</span>
+            </div>
+            <p class="job-desc">Design and develop machine learning models and scalable AI solutions.</p>
+            <div class="tags">
+              <span>Python</span><span>TensorFlow</span><span>Deep Learning</span><span>SQL</span><span>Problem Solving</span>
+            </div>
+          </div>
+          <div class="job-action">
+            <div class="match-circle green">88% <span>Match</span></div>
+            <button class="btn-apply">Apply Now ↗</button>
+            <button class="btn-bookmark">🔖</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-column">
+      <div class="promo-card">
+        <h3>Improve Your Chances</h3>
+        <p>Complete your profile to get better job matches!</p>
+        <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+        <div class="promo-footer">
+          <span>75% Complete</span>
+          <button class="btn-promo">Complete Profile →</button>
+        </div>
+      </div>
+
+      <div class="widget-card">
+        <div class="widget-header">
+          <h4>Job Categories</h4>
+          <a href="#">View All →</a>
+        </div>
+        <ul class="widget-list">
+          <li><span>📈 Data Science & Analytics</span> <span class="count">8</span></li>
+          <li><span>🤖 Machine Learning & AI</span> <span class="count">6</span></li>
+          <li><span>💻 Software Development</span> <span class="count">5</span></li>
+          <li><span>⚙️ Data Engineering</span> <span class="count">3</span></li>
+          <li><span>📊 Business Intelligence</span> <span class="count">2</span></li>
+        </ul>
+      </div>
+
+      <div class="widget-card">
+        <div class="widget-header">
+          <h4>Top Companies</h4>
+          <a href="#">View All →</a>
+        </div>
+        <div class="company-grid">
+          <div class="company-item"><div class="logo">G</div><span>Google</span><small>8 jobs</small></div>
+          <div class="company-item"><div class="logo">田</div><span>Microsoft</span><small>6 jobs</small></div>
+          <div class="company-item"><div class="logo">a</div><span>Amazon</span><small>5 jobs</small></div>
+          <div class="company-item"><div class="logo">TCS</div><span>TCS</span><small>4 jobs</small></div>
+        </div>
+      </div>
+
+      <div class="tips-card">
+        <h4>💡 Quick Tips</h4>
+        <ul>
+          <li>✔ Keep your profile 100% complete</li>
+          <li>✔ Add relevant skills to get better matches</li>
+          <li>✔ Apply to jobs that match your skills</li>
+          <li>✔ Update your resume regularly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+      </div>
+      
+    </div>
+</body>
+</html>

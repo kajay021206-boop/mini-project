@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+     <style>
+        :root {
+  --bg-color: #f5f6fa;
+  --card-bg: #ffffff;
+  --primary: #5200ff;
+  --primary-light: #f0ebff;
+  --text-dark: #1e1e2f;
+  --text-muted: #6c757d;
+  --border-color: #eef0f5;
+  --success: #10b981;
+    }
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body{
+        display: flex;
+        height: 100vh;
+        background: #e4d9ee;
+        justify-content: center;
+       position: fixed;
+       width: 100%;
+      }
+      .dashboard{
+        display: flex;
+        width: 100%;
+        
+      }
+      .dashboard-left{
+        width: 19%;
+       background:linear-gradient(55deg,rgb(11, 3, 28),rgb(22, 15, 85),rgb(13, 4, 49));
+       display: flex;
+       flex-direction: column;
+       padding: 10px;
+       position: relative;
+       gap:10px;
+       border-radius: 5px;
+       color: #fff;
+       height: 100%;
+      }
+      .das-one{
+    width: 100%;
+      }
+    .logo{
+     display: flex;
+     flex-direction: column;
+       width: 100%;
+      }
+      .logo-one{
+        display: flex;
+        font-size: 15px;
+      }
+      .logo-one h1{
+        font-weight: bold;
+      }
+      .logo-one .color{
+        color: rgb(92, 43, 226);
+      }
+      .logo p{
+        font-weight:500;
+        font-size: 15px;
+      }
+      .das-two{
+      display: flex;
+      gap: 10px;
+      position: relative;
+      align-items: center;
+      }
+      .das-two span{
+        font-size: 80px;
+      }
+      .das-two::before{
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        background: rgb(11, 227, 43);
+        right: 70%;
+        bottom: 25%;
+        border-radius: 50%;
+      }
+      .pro-info{
+        display: flex;
+        flex-direction: column;
+      }
+      .pro-info h3{
+        font-size: 15px;
+        color: plum;
+      }
+      .das-three{
+        display: flex;
+        flex-direction: column; 
+        gap:5px;
+        border-bottom: 2px solid #7e78be;
+        overflow-y: auto;
+        height: 53%;
+        width: 104%;
+      }
+      .icon.a{
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        background: rgb(104, 16, 255);
+        border-radius: 5px;
+        border-left: 6px solid rgb(255, 149, 255);
+      }
+      .icon icon.b:checked ~ .icon.a{
+        transform: translateY(calc(60px*1));
+      }
+      .icon{
+         display: flex;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 5px;
+       align-items: center;
+       margin-bottom: 5px;
+      }
+      .icon span{
+        font-size: 28px;
+      }
+      .icon h3{
+        font-size: 15px;
+        font-weight: 100;
+      }
+      .icon.a h3,.icon.a span{
+        color:#fff;
+      }
+      .icon{
+        text-decoration: none;
+        color: #7e78be;
+      }
+      .icon:hover{
+      background: rgba(104, 99, 114, 0.499);
+      color: #fff;
+      }
+      .icon.a:hover{
+     background: rgb(104, 16, 255);
+      }
+      .pre{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 22%;
+        padding: 5px;
+        background: #7e78be2b;
+        border-radius: 10px;
+        gap: 10px;
+        border: 1px solid #7e78be58;
+      }
+      .pro-icon{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        justify-content: center;
+      }
+      .pro-icon span{
+        font-size: 30px;
+        color: rgb(255, 191, 43);
+      }
+      .pro-icon h3{
+        font-size: 18px;
+      }
+      .pre p{
+        font-size: 13px;
+        text-align: center;
+        color: burlywood;
+      }
+      .pre button{
+        padding: 12px;
+        border-radius: 10px;
+        width: 100%;
+         font-size: 16px;
+         font-weight: bold;
+         color: #fff;
+         background: linear-gradient(55deg,#3927fe,#7e78be);
+         border: none;
+      }
+      .right{
+        display: flex;
+        position:relative;
+        flex-direction: column;
+        overflow-y: auto;
+        width: 100%;
+      }
+      .right-one{
+        display: flex;
+        background-color: #fff;
+        justify-content: space-between;
+        position: fixed;
+        width: 84%;
+         z-index: 5;
+      }
+        .search{
+          display: flex;
+          position: relative;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+        }
+        .search input{
+          padding: 10px 30px;
+          width: 430px;
+          border-radius: 5px;
+          border: 1px solid #3927fe;
+        }
+        .search span{
+          display: flex;
+          position: absolute;
+          left: 20px;
+          font-size: 20px;
+        }
+        .message{
+          display: flex;
+          width: 300px;
+          justify-content:space-evenly;
+          align-items: center;
+        }
+        .search-two{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+        .search-one{
+          display: flex;
+          gap: 20px;
+        }
+        .search-one span{
+          font-size: 23px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:5px;
+        }
+        .search-two span{
+          font-size: 27px;
+        }
+        .sp-one{
+          position: relative;
+        }
+        .sp-one::before{
+          content: '';
+          position: absolute;
+          width: 8px;
+          right: 6px;
+          top: 8px;
+          height: 8px;
+          background: red;
+          border-radius:50%;
+        }
+        .search-one span:hover{
+          background: #7e78be92;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:5px;
+          border-radius: 50%;
+        }
+  .person{
+    font-size: 55px;
+  }       
+  a{
+    text-decoration: none;
+  }
+  /* Layout Base */
+.main-content {
+  flex: 1;
+  padding: 24px;
+  background-color: #f8fafc;
+  overflow-y: auto;
+}
+
+/* Page Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-title h1 {
+  font-size: 24px;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.header-title p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background-color: #4f46e5;
+  color: #fff;
+}
+
+.btn-outline {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+}
+
+.btn-block {
+  width: 100%;
+  justify-content: center;
+  padding: 14px;
+  font-size: 16px;
+}
+
+/* Progress Stepper */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 16px 24px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 24px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.step.active {
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.step.active .step-num {
+  background-color: #4f46e5;
+  color: #fff;
+}
+
+.step-line {
+  flex: 1;
+  height: 1px;
+  background-color: #e2e8f0;
+  margin: 0 12px;
+  border-top: 1px dashed #cbd5e1;
+}
+
+/* Grid Layout */
+.builder-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 24px;
+}
+
+/* Cards & Form */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.card-header.space-between {
+  justify-content: space-between;
+}
+
+.icon-purple {
+  color: #4f46e5;
+  background: #e0e7ff;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.card-header h3 {
+  font-size: 16px;
+  color: #1e293b;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+}
+
+.textarea-wrapper {
+  position: relative;
+}
+
+.textarea-wrapper textarea {
+  width: 100%;
+  height: 90px;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13px;
+  resize: vertical;
+}
+
+.char-count {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: #4f46e5;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Experience Box */
+.experience-box {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fafafa;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.company {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.exp-actions {
+  color: #64748b;
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.exp-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.exp-list {
+  padding-left: 16px;
+  font-size: 12px;
+  color: #334155;
+}
+
+/* Document Live Preview Panel */
+.preview-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 16px;
+}
+
+.device-toggle {
+  display: flex;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.device-toggle button {
+  background: none;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.device-toggle button.active {
+  background: #f1f5f9;
+  color: #4f46e5;
+}
+
+.resume-document {
+  display: flex;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 10px;
+  background: #fff;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.doc-sidebar {
+  width: 35%;
+  background: #1e1b4b;
+  color: #fff;
+  padding: 16px 12px;
+}
+
+.doc-sidebar .avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #cbd5e1;
+  margin: 0 auto 8px;
+}
+
+.doc-sidebar h3 { font-size: 12px; text-align: center; }
+.doc-sidebar .role { font-size: 10px; text-align: center; opacity: 0.8; margin-bottom: 12px; }
+.doc-contact { font-size: 8px; margin-bottom: 16px; opacity: 0.9; }
+.doc-section { margin-top: 12px; }
+.doc-section h4 { font-size: 9px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 4px; margin-bottom: 6px; }
+
+.doc-main {
+  width: 65%;
+  padding: 16px 12px;
+  color: #1e293b;
+}
+
+.doc-block { margin-bottom: 12px; }
+.doc-block h4 { font-size: 9px; color: #1e1b4b; border-bottom: 1px solid #e2e8f0; padding-bottom: 2px; margin-bottom: 6px; }
+.job-header { display: flex; justify-content: space-between; }
+.sub { font-size: 8px; color: #64748b; margin-bottom: 4px; }
+.doc-main ul { padding-left: 12px; font-size: 8px; color: #475569; }
+main{
+    margin-top: 50px;
+}
+     </style>
+</head>
+<body>
+    <div class="dashboard">
+
+      <div class="dashboard-left">
+        <div class="das-one">
+            <div class="logo">
+                <div class="logo-one">
+                   <h1 >SkillMatch</h1>
+                   <h1 class="color">AI</h1>
+                </div>
+                    <p>Smart Job Finder</p>
+              </div>
+        </div>
+          
+        <div class="das-two">
+            <div class="profile">
+                <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+            <div class="pro-info">
+                <h2>Hello, Kaja!</h2>
+                <h3>Job Seeker</h3>
+            </div>
+        </div>
+
+        <div class="das-three">
+              <a href="dashboard.html">
+            <div class="icon">
+                <span><i class='bx bxs-dashboard'></i></span>
+                <h3>Dashboard</h3></div>
+                </a>
+                <a href="profile.html">
+             <div class="icon" id="user">
+                <span ><i class='bx bxs-user'></i></span>
+                <h3>Profile</h3> </div>
+                </a>
+                <a href="resume.html">
+             <div class="icon a">
+                <span><i class='bx bxs-file'></i></span>
+                <h3>Resume Builder</h3> </div>
+                </a>
+                <a href="resumeana.html">
+             <div class="icon">
+                <span><i class='bx bxs-pie-chart-alt-2'></i></span>
+                <h3>Resume Analysis</h3> </div>
+                </a>
+                <a href="find.html">
+             <div class="icon">
+                <span><i class='bx bxs-briefcase-alt-2'></i></span>
+                <h3>Find Jobs</h3> </div>
+                </a>
+                <a href="recommend.html">
+             <div class="icon">
+                <span><i class='bx bxs-star'></i></span>
+                <h3>Recommended Jobs</h3> </div>
+                </a>
+                <a href="skill.html">
+             <div class="icon">
+                <span><i class='bx bx-line-chart'></i></span>
+                <h3>Skill Gap Analysis</h3> </div>
+                </a>
+                <a href="saved.html">
+             <div class="icon">
+                <span><i class='bx bxs-bookmark'></i></span>
+                <h3>Saved Jobs</h3> </div>
+                </a>
+                <a href="application.html">
+                <div class="icon">
+                <span><i class='bx bxs-file'></i></span>
+                <h3>Application</h3> </div>
+                </a>
+                <a href="resourse.html">
+                <div class="icon">
+                <span><i class='bx bxs-food-menu'></i></span>
+                <h3>Resources</h3> </div>
+                </a>
+                <a href="settings.html">
+             <div class="icon">
+                <span><i class='bx bxs-cog'></i></span>
+                <h3>Settings</h3> </div>
+                </a>
+
+        </div>
+
+          <div class="pre">
+            <div class="pro-icon">
+                <span><i class='bx bxs-user-circle'></i></span>
+                <h3>Upgrade to Pro</h3>
+            </div>
+            <p>Access advanced features</p>
+            <div class="pro-but">
+                <button>Upgrade Now</button>
+            </div>
+          </div>
+
+      </div>
+         
+
+      <div class="right">
+          
+        <div class="right-one">
+          <div class="search">
+            <input  type="text" placeholder="Search for jobs, skills or companies....." >
+            <span><i class='bx bx-search'></i></span>
+          </div>
+          <div class="message">
+            <div class="search-one">
+            <span class="sp-one"><i class='bx bx-bell'></i></span>
+            <span class="sp-two"><i class='bx bx-message'></i></span>
+            </div>
+            <div class="search-two">
+              <h2>Kaja</h2>
+              <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+          </div>
+        </div>
+              
+        <main class="main-content">
+  <!-- Page Header -->
+  <header class="page-header">
+    <div class="header-title">
+      <h1>Resume Builder</h1>
+      <p>Create a professional resume that gets you hired.</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-outline"><i class="fa-regular fa-clone"></i> Templates</button>
+      <button class="btn btn-primary"><i class="fa-solid fa-download"></i> Preview & Download</button>
+    </div>
+  </header>
+
+  <!-- Progress Stepper -->
+  <div class="stepper">
+    <div class="step active"><span class="step-num">1</span> Personal Info</div>
+    <div class="step-line"></div>
+    <div class="step"><span class="step-num">2</span> Work Experience</div>
+    <div class="step-line"></div>
+    <div class="step"><span class="step-num">3</span> Education</div>
+    <div class="step-line"></div>
+    <div class="step"><span class="step-num">4</span> Skills</div>
+    <div class="step-line"></div>
+    <div class="step"><span class="step-num">5</span> Summary</div>
+    <div class="step-line"></div>
+    <div class="step"><span class="step-num">6</span> Review</div>
+  </div>
+
+  <!-- Content Layout Grid -->
+  <div class="builder-grid">
+    <!-- Left Column: Form Section -->
+    <div class="form-container">
+      
+      <!-- Personal Information Card -->
+      <div class="card">
+        <div class="card-header">
+          <i class="fa-solid fa-user icon-purple"></i>
+          <h3>Personal Information</h3>
+        </div>
+        <div class="form-grid">
+          <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" value="Kaja Sharma" />
+          </div>
+          <div class="input-group">
+            <label>Email</label>
+            <input type="email" value="kaja@example.com" />
+          </div>
+          <div class="input-group">
+            <label>Phone</label>
+            <input type="text" value="+91 98765 43210" />
+          </div>
+          <div class="input-group">
+            <label>Job Title</label>
+            <input type="text" value="Data Scientist" />
+          </div>
+          <div class="input-group">
+            <label>Location</label>
+            <input type="text" value="Bangalore, India" />
+          </div>
+          <div class="input-group">
+            <label>LinkedIn</label>
+            <input type="text" value="linkedin.com/in/kaja" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional Summary Card -->
+      <div class="card">
+        <div class="card-header">
+          <i class="fa-solid fa-file-lines icon-purple"></i>
+          <div>
+            <h3>Professional Summary</h3>
+            <p class="subtitle">Write a short summary about yourself and your career goals.</p>
+          </div>
+        </div>
+        <div class="textarea-wrapper">
+          <textarea maxlength="500">Passionate Data Scientist with 2+ years of experience in machine learning, data analysis and building data-driven solutions. Skilled in Python, SQL, and data visualization.</textarea>
+          <span class="char-count">145/500</span>
+        </div>
+      </div>
+
+      <!-- Work Experience Card -->
+      <div class="card">
+        <div class="card-header space-between">
+          <div class="title-with-icon">
+            <i class="fa-solid fa-briefcase icon-purple"></i>
+            <div>
+              <h3>Work Experience</h3>
+              <p class="subtitle">Add your work experience details.</p>
+            </div>
+          </div>
+          <button class="btn-text">+ Add Experience</button>
+        </div>
+        
+        <div class="experience-box">
+          <div class="exp-header">
+            <div>
+              <h4>Data Analyst</h4>
+              <p class="company">Tech Solutions Pvt. Ltd.</p>
+            </div>
+            <div class="exp-actions">
+              <i class="fa-solid fa-pen"></i>
+              <i class="fa-solid fa-trash"></i>
+            </div>
+          </div>
+          <div class="exp-meta">
+            <span><i class="fa-regular fa-calendar"></i> Jan 2023 - Present</span>
+            <span><i class="fa-solid fa-location-dot"></i> Bangalore, India</span>
+          </div>
+          <ul class="exp-list">
+            <li>Analyzed large datasets to identify trends and insights.</li>
+            <li>Built dashboards and reports using Power BI.</li>
+            <li>Collaborated with cross-functional teams to improve data quality.</li>
+          </ul>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block">Save & Continue &rarr;</button>
+    </div>
+
+    <!-- Right Column: Resume Preview Panel -->
+    <div class="preview-container">
+      <div class="preview-card">
+        <div class="preview-header">
+          <span><i class="fa-regular fa-eye"></i> Resume Preview</span>
+          <div class="device-toggle">
+            <button class="active"><i class="fa-solid fa-desktop"></i></button>
+            <button><i class="fa-solid fa-mobile-screen"></i></button>
+          </div>
+        </div>
+        
+        <div class="resume-document">
+          <!-- Sidebar Section of Resume Document -->
+          <div class="doc-sidebar">
+            <div class="avatar"></div>
+            <h3>Kaja Sharma</h3>
+            <p class="role">Data Scientist</p>
+            
+            <div class="doc-contact">
+              <p><i class="fa-regular fa-envelope"></i> kaja@example.com</p>
+              <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+              <p><i class="fa-solid fa-location-dot"></i> Bangalore, India</p>
+              <p><i class="fa-brands fa-linkedin"></i> linkedin.com/in/kaja-sharma</p>
+            </div>
+
+            <div class="doc-section">
+              <h4>SKILLS</h4>
+              <ul>
+                <li>Python</li>
+                <li>Machine Learning</li>
+                <li>SQL</li>
+                <li>Data Analysis</li>
+                <li>Data Visualization</li>
+                <li>Communication</li>
+              </ul>
+            </div>
+
+            <div class="doc-section">
+              <h4>EDUCATION</h4>
+              <p class="degree">B.Tech in Computer Science</p>
+              <p class="school">University of Bangalore</p>
+              <p class="year">2017 - 2021</p>
+              <p class="cgpa">CGPA: 8.2</p>
+            </div>
+          </div>
+
+          <!-- Main Body of Resume Document -->
+          <div class="doc-main">
+            <div class="doc-block">
+              <h4>PROFESSIONAL SUMMARY</h4>
+              <p>Passionate Data Scientist with 2+ years of experience in machine learning, data analysis and building data-driven solutions. Skilled in Python, SQL, and data visualization.</p>
+            </div>
+
+            <div class="doc-block">
+              <h4>WORK EXPERIENCE</h4>
+              <div class="job-item">
+                <div class="job-header">
+                  <strong>Data Analyst</strong>
+                  <span class="date">Jan 2023 - Present</span>
+                </div>
+                <p class="sub">Tech Solutions Pvt. Ltd. | Bangalore, India</p>
+                <ul>
+                  <li>Analyzed large datasets to identify trends and insights.</li>
+                  <li>Built dashboards and reports using Power BI.</li>
+                  <li>Collaborated with cross-functional teams to improve data quality.</li>
+                </ul>
+              </div>
+
+              <div class="job-item">
+                <div class="job-header">
+                  <strong>Junior Data Analyst</strong>
+                  <span class="date">Jun 2021 - Dec 2022</span>
+                </div>
+                <p class="sub">Innova Analytics | Bangalore, India</p>
+                <ul>
+                  <li>Cleaned and processed data for analysis.</li>
+                  <li>Created visualizations to support business decisions.</li>
+                  <li>Automated reporting processes, saving 10+ hours weekly.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="doc-block">
+              <h4>EDUCATION</h4>
+              <div class="job-header">
+                <strong>B.Tech in Computer Science</strong>
+                <span class="date">2017 - 2021</span>
+              </div>
+              <p class="sub">University of Bangalore</p>
+              <p class="sub">CGPA: 8.2</p>
+            </div>
+
+            <div class="doc-block">
+              <h4>PROJECTS</h4>
+              <p><strong>Customer Churn Prediction</strong></p>
+              <p class="sub">Built a machine learning model to predict customer churn with 92% accuracy.</p>
+              <p><strong>Sales Dashboard</strong></p>
+              <p class="sub">Developed an interactive dashboard in Power BI for sales performance tracking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+        
+
+      </div>
+      
+    </div>
+</body>
+</html>

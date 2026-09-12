@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+     <style>
+        :root {
+  --bg-color: #f5f6fa;
+  --card-bg: #ffffff;
+  --primary: #5200ff;
+  --primary-light: #f0ebff;
+  --text-dark: #1e1e2f;
+  --text-muted: #6c757d;
+  --border-color: #eef0f5;
+  --success: #10b981;
+    }
+      *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body{
+        display: flex;
+        height: 100vh;
+        background: #e4d9ee;
+        justify-content: center;
+       position: fixed;
+       width: 100%;
+      }
+      .dashboard{
+        display: flex;
+        width: 100%;
+        
+      }
+      .dashboard-left{
+        width: 19%;
+       background:linear-gradient(55deg,rgb(11, 3, 28),rgb(22, 15, 85),rgb(13, 4, 49));
+       display: flex;
+       flex-direction: column;
+       padding: 10px;
+       position: relative;
+       gap:10px;
+       border-radius: 5px;
+       color: #fff;
+       height: 100%;
+      }
+      .das-one{
+    width: 100%;
+      }
+    .logo{
+     display: flex;
+     flex-direction: column;
+       width: 100%;
+      }
+      .logo-one{
+        display: flex;
+        font-size: 15px;
+      }
+      .logo-one h1{
+        font-weight: bold;
+      }
+      .logo-one .color{
+        color: rgb(92, 43, 226);
+      }
+      .logo p{
+        font-weight:500;
+        font-size: 15px;
+      }
+      .das-two{
+      display: flex;
+      gap: 10px;
+      position: relative;
+      align-items: center;
+      }
+      .das-two span{
+        font-size: 80px;
+      }
+      .das-two::before{
+        content: '';
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        background: rgb(11, 227, 43);
+        right: 70%;
+        bottom: 25%;
+        border-radius: 50%;
+      }
+      .pro-info{
+        display: flex;
+        flex-direction: column;
+      }
+      .pro-info h3{
+        font-size: 15px;
+        color: plum;
+      }
+      .das-three{
+        display: flex;
+        flex-direction: column; 
+        gap:5px;
+        border-bottom: 2px solid #7e78be;
+        overflow-y: auto;
+        height: 53%;
+        width: 104%;
+      }
+      .icon.a{
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        background: rgb(104, 16, 255);
+        border-radius: 5px;
+        border-left: 6px solid rgb(255, 149, 255);
+      }
+      .icon icon.b:checked ~ .icon.a{
+        transform: translateY(calc(60px*1));
+      }
+      .icon{
+         display: flex;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 5px;
+       align-items: center;
+       margin-bottom: 5px;
+      }
+      .icon span{
+        font-size: 28px;
+      }
+      .icon h3{
+        font-size: 15px;
+        font-weight: 100;
+      }
+      .icon.a h3,.icon.a span{
+        color:#fff;
+      }
+      .icon{
+        text-decoration: none;
+        color: #7e78be;
+      }
+      .icon:hover{
+      background: rgba(104, 99, 114, 0.499);
+      color: #fff;
+      }
+      .icon.a:hover{
+     background: rgb(104, 16, 255);
+      }
+      .pre{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 22%;
+        padding: 5px;
+        background: #7e78be2b;
+        border-radius: 10px;
+        gap: 10px;
+        border: 1px solid #7e78be58;
+      }
+      .pro-icon{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        justify-content: center;
+      }
+      .pro-icon span{
+        font-size: 30px;
+        color: rgb(255, 191, 43);
+      }
+      .pro-icon h3{
+        font-size: 18px;
+      }
+      .pre p{
+        font-size: 13px;
+        text-align: center;
+        color: burlywood;
+      }
+      .pre button{
+        padding: 12px;
+        border-radius: 10px;
+        width: 100%;
+         font-size: 16px;
+         font-weight: bold;
+         color: #fff;
+         background: linear-gradient(55deg,#3927fe,#7e78be);
+         border: none;
+      }
+      .right{
+        display: flex;
+        position:relative;
+        flex-direction: column;
+        overflow-y: auto;
+        width: 100%;
+      }
+      .right-one{
+        display: flex;
+        background-color: #fff;
+        justify-content: space-between;
+        position: fixed;
+        width: 84%;
+         z-index: 5;
+      }
+        .search{
+          display: flex;
+          position: relative;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+        }
+        .search input{
+          padding: 10px 30px;
+          width: 430px;
+          border-radius: 5px;
+          border: 1px solid #3927fe;
+        }
+        .search span{
+          display: flex;
+          position: absolute;
+          left: 20px;
+          font-size: 20px;
+        }
+        .message{
+          display: flex;
+          width: 300px;
+          justify-content:space-evenly;
+          align-items: center;
+        }
+        .search-two{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+        .search-one{
+          display: flex;
+          gap: 20px;
+        }
+        .search-one span{
+          font-size: 23px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:5px;
+        }
+        .search-two span{
+          font-size: 27px;
+        }
+        .sp-one{
+          position: relative;
+        }
+        .sp-one::before{
+          content: '';
+          position: absolute;
+          width: 8px;
+          right: 6px;
+          top: 8px;
+          height: 8px;
+          background: red;
+          border-radius:50%;
+        }
+        .search-one span:hover{
+          background: #7e78be92;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding:5px;
+          border-radius: 50%;
+        }
+  .person{
+    font-size: 55px;
+  }       
+  a{
+    text-decoration: none;
+  }
+  .main-content {
+  flex: 1;
+  padding: 24px 32px;
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1e293b;
+  margin-top: 50px;
+}
+
+.header-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.header-text h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-text p {
+  color: #64748b;
+  font-size: 13px;
+  margin: 4px 0 0 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #4f46e5;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr 340px;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.match-card, .skills-summary-card, .target-job-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.match-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.donut-chart {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: conic-gradient(#4f46e5 0% 68%, #e2e8f0 68% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.donut-chart::before {
+  content: "";
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.donut-chart .percentage {
+  position: relative;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1e293b;
+}
+
+.match-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+}
+
+.match-info p {
+  margin: 0;
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+.skills-summary-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.summary-col {
+  border-right: 1px solid #f1f5f9;
+  padding-right: 12px;
+}
+
+.summary-col:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.col-title {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.summary-col .count {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 2px 0;
+}
+
+.summary-col .subtext {
+  font-size: 11px;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.status {
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.status.green { color: #16a34a; }
+.status.blue { color: #2563eb; }
+
+.target-job-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.target-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.job-badge {
+  display: flex;
+  gap: 10px;
+}
+
+.job-badge .icon {
+  width: 36px;
+  height: 36px;
+  background: #e0e7ff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.job-badge .label {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.job-badge h4 {
+  margin: 1px 0;
+  font-size: 13px;
+}
+
+.job-badge .location {
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+.match-tag {
+  background: #f3e8ff;
+  color: #7e22ce;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.target-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.btn-blue {
+  background: #4338ca;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.btn-outline {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.dashboard-body {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+}
+
+.section-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.legend {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.dot.blue { background: #4f46e5; }
+.dot.light-blue { background: #e0e7ff; }
+
+.skill-bar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.skill-name {
+  width: 140px;
+  color: #334155;
+}
+
+.progress-container {
+  flex: 1;
+  margin: 0 12px;
+}
+
+.progress-bar-bg {
+  background: #e0e7ff;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  background: #4f46e5;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.skill-val {
+  width: 70px;
+  text-align: right;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.banner-card {
+  background: linear-gradient(135deg, #eff6ff, #e0e7ff);
+  border: 1px solid #c7d2fe;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.banner-illustration {
+  font-size: 28px;
+}
+
+.banner-content h4 {
+  margin: 0 0 2px 0;
+  font-size: 13px;
+  color: #1e1b4b;
+}
+
+.banner-content p {
+  margin: 0;
+  font-size: 11px;
+  color: #4338ca;
+}
+
+.btn-learning {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.section-title h4 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.section-title p {
+  margin: 2px 0 12px 0;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.gap-list, .recommendation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gap-item, .rec-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  background: #f8fafc;
+  gap: 10px;
+}
+
+.num {
+  width: 20px;
+  height: 20px;
+  background: #e0e7ff;
+  color: #4338ca;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.gap-info, .rec-info {
+  flex: 1;
+}
+
+.gap-info h5, .rec-info h5 {
+  margin: 0;
+  font-size: 12px;
+}
+
+.gap-info p, .rec-info p {
+  margin: 2px 0 0 0;
+  font-size: 10px;
+  color: #64748b;
+}
+
+.boost-tag {
+  background: #fce7f3;
+  color: #db2777;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.time-tag {
+  background: #e0e7ff;
+  color: #4338ca;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.arrow {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.widget-header h4 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.widget-header a {
+  font-size: 11px;
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.rec-icon {
+  width: 28px;
+  height: 28px;
+  background: #e0e7ff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+     </style>
+</head>
+<body>
+    <div class="dashboard">
+
+      <div class="dashboard-left">
+        <div class="das-one">
+            <div class="logo">
+                <div class="logo-one">
+                   <h1 >SkillMatch</h1>
+                   <h1 class="color">AI</h1>
+                </div>
+                    <p>Smart Job Finder</p>
+              </div>
+        </div>
+          
+        <div class="das-two">
+            <div class="profile">
+                <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+            <div class="pro-info">
+                <h2>Hello, Kaja!</h2>
+                <h3>Job Seeker</h3>
+            </div>
+        </div>
+
+        <div class="das-three">
+            <a href="dashboard.html">
+            <div class="icon">
+                <span><i class='bx bxs-dashboard'></i></span>
+                <h3>Dashboard</h3></div>
+                </a>
+                <a href="profile.html">
+             <div class="icon" id="user">
+                <span ><i class='bx bxs-user'></i></span>
+                <h3>Profile</h3> </div>
+                </a>
+                <a href="resume.html">
+             <div class="icon">
+                <span><i class='bx bxs-file'></i></span>
+                <h3>Resume Builder</h3> </div>
+                </a>
+                <a href="resumeana.html">
+             <div class="icon">
+                <span><i class='bx bxs-pie-chart-alt-2'></i></span>
+                <h3>Resume Analysis</h3> </div>
+                </a>
+                <a href="find.html">
+             <div class="icon">
+                <span><i class='bx bxs-briefcase-alt-2'></i></span>
+                <h3>Find Jobs</h3> </div>
+                </a>
+                <a href="recommend.html">
+             <div class="icon">
+                <span><i class='bx bxs-star'></i></span>
+                <h3>Recommended Jobs</h3> </div>
+                </a>
+                <a href="skill.html">
+             <div class="icon a">
+                <span><i class='bx bx-line-chart'></i></span>
+                <h3>Skill Gap Analysis</h3> </div>
+                </a>
+                <a href="saved.html">
+             <div class="icon">
+                <span><i class='bx bxs-bookmark'></i></span>
+                <h3>Saved Jobs</h3> </div>
+                </a>
+                <a href="application.html">
+                <div class="icon">
+                <span><i class='bx bxs-file'></i></span>
+                <h3>Application</h3> </div>
+                </a>
+                <a href="resourse.html">
+                <div class="icon">
+                <span><i class='bx bxs-food-menu'></i></span>
+                <h3>Resources</h3> </div>
+                </a>
+                <a href="settings.html">
+             <div class="icon">
+                <span><i class='bx bxs-cog'></i></span>
+                <h3>Settings</h3> </div>
+                </a>
+        </div>
+
+          <div class="pre">
+            <div class="pro-icon">
+                <span><i class='bx bxs-user-circle'></i></span>
+                <h3>Upgrade to Pro</h3>
+            </div>
+            <p>Access advanced features</p>
+            <div class="pro-but">
+                <button>Upgrade Now</button>
+            </div>
+          </div>
+
+      </div>
+         
+
+      <div class="right">
+          
+        <div class="right-one">
+          <div class="search">
+            <input  type="text" placeholder="Search for jobs, skills or companies....." >
+            <span><i class='bx bx-search'></i></span>
+          </div>
+          <div class="message">
+            <div class="search-one">
+            <span class="sp-one"><i class='bx bx-bell'></i></span>
+            <span class="sp-two"><i class='bx bx-message'></i></span>
+            </div>
+            <div class="search-two">
+              <h2>Kaja</h2>
+              <span><i class='bx bxs-user-circle'></i></span>
+            </div>
+          </div>
+        </div>
+              
+
+        <main class="main-content">
+  <div class="header-banner">
+    <div class="header-text">
+      <h1>Skill Gap Analysis <span class="sparkle">✨</span></h1>
+      <p>Discover the skills you need to learn and grow. Get personalized recommendations to bridge your skill gaps and become job-ready.</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn-secondary">💼 Analyze New Job</button>
+      <button class="btn-primary">🎓 My Career Goals</button>
+    </div>
+  </div>
+
+  <div class="overview-grid">
+    <div class="match-card">
+      <div class="donut-chart">
+        <span class="percentage">68%</span>
+      </div>
+      <div class="match-info">
+        <h4>Overall Skill Match</h4>
+        <p>You have a good foundation! Focus on the missing skills to improve your chances.</p>
+      </div>
+    </div>
+
+    <div class="skills-summary-card">
+      <div class="summary-col">
+        <span class="col-title">Your Skills</span>
+        <div class="count">8</div>
+        <span class="subtext">Total Skills</span>
+        <div class="status green">✔ 5 Matched</div>
+        <div class="status blue">➕ 3 Missing</div>
+      </div>
+      <div class="summary-col">
+        <span class="col-title">Required Skills (Target Job)</span>
+        <div class="count">12</div>
+        <span class="subtext">Total Skills</span>
+        <div class="status green">✔ 8 Matched</div>
+        <div class="status blue">➕ 4 Missing</div>
+      </div>
+    </div>
+
+    <div class="target-job-card">
+      <div class="target-header">
+        <div class="job-badge">
+          <span class="icon">💼</span>
+          <div>
+            <span class="label">Target Job</span>
+            <h4>Data Scientist</h4>
+            <span class="location">Google • Bangalore, India</span>
+          </div>
+        </div>
+        <span class="match-tag">High Match</span>
+      </div>
+      <div class="target-actions">
+        <button class="btn-blue">View Job Details ↗</button>
+        <button class="btn-outline">Change Job</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-body">
+    <div class="left-column">
+      <div class="section-card">
+        <div class="section-header">
+          <h3>Skills Comparison</h3>
+          <div class="legend">
+            <span><span class="dot blue"></span> Your Skill Level</span>
+            <span><span class="dot light-blue"></span> Required Skill Level</span>
+          </div>
+        </div>
+
+        <div class="skill-bar-list">
+          <div class="skill-item">
+            <span class="skill-name">🐍 Python</span>
+            <div class="progress-container">
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 90%;"></div></div>
+            </div>
+            <span class="skill-val">90% / 100%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">🤖 Machine Learning</span>
+            <div class="progress-container">
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 75%;"></div></div>
+            </div>
+            <span class="skill-val">75% / 100%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">🛢️ SQL</span>
+            <div class="progress-container">
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 70%;"></div></div>
+            </div>
+            <span class="skill-val">70% / 100%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">📊 Data Analysis</span>
+            <div class="progress-container">
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 65%;"></div></div>
+            </div>
+            <span class="skill-val">65% / 100%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">💬 Communication</span>
+            <div class="progress-container">
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 60%;"></div></div>
+            </div>
+            <span class="skill-val">60% / 80%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">📈 Statistics</span>
+            <div class="progress-container">
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 45%;"></div></div>
+            </div>
+            <span class="skill-val">45% / 70%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">🧠 Deep Learning</span>
+            <div class="progress-container">
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 40%;"></div></div>
+            </div>
+            <span class="skill-val">40% / 70%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">💡 Problem Solving</span>
+            <div class="progress-container">
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 55%;"></div></div>
+            </div>
+            <span class="skill-val">55% / 80%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">📗 Excel</span>
+            <div class="progress-container">
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 50%;"></div></div>
+            </div>
+            <span class="skill-val">50% / 70%</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-name">👁️ Visualization</span>
+            <div class="progress-container">
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 30%;"></div></div>
+            </div>
+            <span class="skill-val">30% / 60%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="banner-card">
+        <div class="banner-illustration">🎯</div>
+        <div class="banner-content">
+          <h4>Close the gap, reach your goals!</h4>
+          <p>Build the missing skills, get more job opportunities, and achieve your dream career with SkillMatchAI.</p>
+        </div>
+        <button class="btn-learning">Start Learning →</button>
+      </div>
+    </div>
+
+    <div class="right-column">
+      <div class="section-card">
+        <div class="section-title">
+          <h4>🎯 Top Skill Gaps</h4>
+          <p>Focus on these skills to improve your match score.</p>
+        </div>
+        <div class="gap-list">
+          <div class="gap-item">
+            <span class="num">1</span>
+            <div class="gap-info">
+              <h5>Deep Learning</h5>
+              <p>You are 40% proficient. Target level is 70%.</p>
+            </div>
+            <span class="boost-tag">+30%</span>
+            <span class="arrow">></span>
+          </div>
+          <div class="gap-item">
+            <span class="num">2</span>
+            <div class="gap-info">
+              <h5>Statistics</h5>
+              <p>You are 45% proficient. Target level is 70%.</p>
+            </div>
+            <span class="boost-tag">+25%</span>
+            <span class="arrow">></span>
+          </div>
+          <div class="gap-item">
+            <span class="num">3</span>
+            <div class="gap-info">
+              <h5>Visualization</h5>
+              <p>You are 30% proficient. Target level is 60%.</p>
+            </div>
+            <span class="boost-tag">+30%</span>
+            <span class="arrow">></span>
+          </div>
+          <div class="gap-item">
+            <span class="num">4</span>
+            <div class="gap-info">
+              <h5>Excel</h5>
+              <p>You are 50% proficient. Target level is 70%.</p>
+            </div>
+            <span class="boost-tag">+20%</span>
+            <span class="arrow">></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="widget-header">
+          <h4>💡 Learning Recommendations</h4>
+          <a href="#">View All</a>
+        </div>
+        <div class="recommendation-list">
+          <div class="rec-item">
+            <div class="rec-icon">🧠</div>
+            <div class="rec-info">
+              <h5>Deep Learning Basics</h5>
+              <p>Learn neural networks and deep learning concepts.</p>
+            </div>
+            <span class="time-tag">2-3 weeks</span>
+            <span class="arrow">></span>
+          </div>
+          <div class="rec-item">
+            <div class="rec-icon">📊</div>
+            <div class="rec-info">
+              <h5>Statistics for Data Science</h5>
+              <p>Build a strong foundation in statistical analysis.</p>
+            </div>
+            <span class="time-tag">1-2 weeks</span>
+            <span class="arrow">></span>
+          </div>
+          <div class="rec-item">
+            <div class="rec-icon">📈</div>
+            <div class="rec-info">
+              <h5>Data Visualization with Python</h5>
+              <p>Master Matplotlib and Seaborn for better insights.</p>
+            </div>
+            <span class="time-tag">1-2 weeks</span>
+            <span class="arrow">></span>
+          </div>
+          <div class="rec-item">
+            <div class="rec-icon">📗</div>
+            <div class="rec-info">
+              <h5>Advanced Excel for Data Analysis</h5>
+              <p>Learn data cleaning, pivot tables and charts.</p>
+            </div>
+            <span class="time-tag">1-2 weeks</span>
+            <span class="arrow">></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+      </div>
+      
+    </div>
+</body>
+</html>
