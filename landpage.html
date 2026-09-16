@@ -25,6 +25,9 @@
         background: #fff;
         align-items: center;
         padding: 10px;
+        position: fixed;
+        width: 100%;
+        z-index: 10;
       }
       .logo{
         display: flex;
@@ -86,6 +89,7 @@
       .login{
         display: flex;
         gap: 20px;
+        z-index: 12;
       }
       .login button{
         padding: 10px 30px;
@@ -121,6 +125,7 @@
         padding: 20px;
         display: flex;
         gap: 80px;
+        margin-top: 70px;
         justify-content: center;
           background: radial-gradient(circle at top left,rgb(70, 70, 130),transparent 40%),radial-gradient(circle at bottom right,rgb(18, 18, 70),transparent 40%);
       }
@@ -187,6 +192,11 @@
         align-items: center;
         gap: 10px;
         padding: 10px;
+        transition: 0.5s;
+       }
+       .job:hover{
+        box-shadow: 0 0 10px;
+        border-radius: 10px;
        }
        .logo-job span{
         font-size: 35px;
@@ -217,7 +227,7 @@
         background: rgba(22, 65, 194, 0.863);
        }
         .job.b span{
-        background: rgb(10, 147, 83);
+        background: rgb(23, 206, 121);
        }
         .job.c span{
         background: rgba(232, 166, 34, 0.863);
@@ -314,6 +324,74 @@
         background: rgba(255, 174, 0, 0.42);
         color: orangered;
        }
+      .searchoption{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        position: absolute;
+        z-index: 12;
+        padding: 20px;
+        background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.779),transparent,transparent),url(image.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 650px;
+        margin-top: 70px;
+        transition: 0.5s;
+        opacity: 0;
+      }
+      .searchicon{
+        display: flex;
+        position: absolute;
+      }
+      .searchicon input{
+        padding: 10px;
+        width: 380px;
+        border: 2px solid rgb(170, 0, 255);
+        border-radius: 5px 0 0 5px;
+        background: rgb(248, 248, 249);
+        font-size: 15px;
+         outline: none;
+      }
+      .searchicon button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        width: 80px;
+        font-size: 25px;
+        border:2px solid  rgb(170, 1, 255) ;
+        border-radius: 0 5px 5px 0;
+        background:  rgb(170, 0, 255);
+        color: #fff;
+      }
+      .searchicon button:hover{
+        background:  rgb(52, 6, 74);
+      }
+      .jobbut{
+        display: flex;
+        position: absolute;
+        margin-top: 60px;
+        gap: 30px;
+      }
+      .jobbut button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        padding: 10px;
+        border-radius: 20px;
+        border: none;
+        background: #65626226;
+        font-size: 15px;
+        color: rgb(115, 0, 164);
+      }
+      .jobbut button:hover{
+        background:rgb(179, 2, 255);
+        color: #fff;
+        border: 2px solid #fff;
+        box-shadow: 0 0 12px #2c2c2c;
+      }
     </style>
 </head>
 <body>
@@ -325,9 +403,10 @@
             </div>
             <p>Smart Job Finder</p>
         </div>
+       
         <nav>
             <a href="#home">Home</a>
-            <a href="#find-jobs">Find Jobs</a>
+            <a id="jobfind" href="#">Find Jobs</a>
             <a href="#resume">
               <select class="sel">
                 <option>Resume</option>
@@ -348,8 +427,24 @@
             <button class="login-two">Sign Up</button>
         </div>
     </div>
+    <div class="searchoption">
+      <div class="searchicon">
+      <input id="searchinput" type="text" placeholder="Search for jobs,skills or companies...">
+      <button id="searchbut"><i class='bx bx-search'></i></button>
+      </div>
+      <div class="jobbut">
+        <button id="alljobs"><i class='bx bx-box'></i> All Jobs</button>
+          <button id="fulltime"><i class='bx bx-briefcase'></i> Full-time</button>
+            <button id="parttime"><i class='bx bx-time'></i> Part-time</button>
+              <button id="remote"><i class='bx bx-search'></i> Remote</button>
+      </div>
+      <div id="jobresult">
+
+      </div>
+    </div>
 
     <section id="home" class="home">
+
            <div class="left">
               <h3><i class='bx bx-chip'></i> AI POWERED CAREER ASSISTANT</h3>
               <div class="home-text">
@@ -357,10 +452,13 @@
   
               </div>
               <p>SkillMatchAI help students and job seekers find the best career opportunities with AI-powered resume analysis,skill matching,and personalized job recommendations.</p>
-              <div class="login">
-                 <button class="login-one">Find Jobs</button>
-               <button class="login-two">Build Resume</button>
+              <div id="logins"  class="login">
+                 <button id="findjob" class="login-one">Find Jobs</button>
+               <button id="resumebuild"  class="login-two">Build Resume</button>
               </div>
+                <div class="p">
+                  <p id="status">Research for Updated Jobs......</p>
+                </div>
            </div>
 
            <div class="right">
@@ -457,5 +555,126 @@
            </div>
            
     </section>
+        
+    <script>
+          const findjob=document.getElementById("findjob");
+          const resumebuild=document.getElementById("resumebuild");
+          const searchoptions=document.querySelector(".searchoption");
+          const searchinput=document.getElementById("searchinput");
+          const searchbut=document.getElementById("searchbut");
+          const jobfinds=document.getElementById("jobfind");
+          const logins=document.getElementById("logins");
+          const alljobs=document.getElementById("alljobs");
+          const fulltime=document.getElementById("fulltime");
+          const parttime=document.getElementById("parttime");
+          const remote=document.getElementById("remote");
+          const jobresult=document.getElementById("jobresult");
+
+
+
+
+
+
+
+
+   //for findjob button
+          findjob.addEventListener("click", function(){
+            let count=0;
+             let finding=setInterval(function(){
+              count++;
+              findjob.textContent="Searching"+".".repeat(count);
+              if(count===7){
+                clearInterval(finding);
+                findjob.textContent = "Found a job 🚀";
+            findjob.style.background = "green";
+            findjob.style.color = "#fff";
+            findjob.style.borderColor = "#fff";
+            findjob.style.boxShadow="none";
+              }
+             },500);
+          });
+
+          //for resumbutton
+         resumebuild.addEventListener("click",function(){
+          let  count=0;
+          let building=setInterval(function(){
+            count++;
+            resumebuild.style.background="orange";
+            resumebuild.style.border="2px solid #fff";
+            resumebuild.style.boxShadow="none";
+            resumebuild.style.color="#fff"
+          resumebuild.textContent="Building"+".".repeat(count);
+          if(count===7){
+            clearInterval(building);
+            resumebuild.textContent="Completed 👍"
+            resumebuild.style.background="darkgreen";
+            resumebuild.style.borderColor="#fff";
+            resumebuild.style.color="#fff"; 
+          }
+          },500)
+         
+         });
+
+  //for searchoption
+  jobfinds.addEventListener("click", function(){
+    searchoptions.style.opacity="1";
+     logins.style.opacity="0";
+     searchoptions.style.position="fixed";
+  });
+
+    //for alljobs button
+    alljobs.addEventListener("click", function(){
+        jobresult.innerHTML=`
+        <div class="jobcard">
+<div class="jobcardone">
+  <div class="jobcardtwo">
+    <span></span>
+  </div>
+  <div class="jobthree">
+    <h1>Python Development</h1>
+    <h2>Tech Solution</h2>
+    <div class="jobp">
+      <p>Hyderabad</p>
+      <p>Full-time</p>
+    </div>
+    <div class="jobcardfour">
+      <h3>Full-time</h3>
+    </div>
+  </div>
+</div>
+<div class="jobcardinfo">
+  <h1>Skills:Python,SQL,Git</h1>
+  <p>We are looking for a skilled Python Developer to join our growing team.You will working on exciting projects and help build scalable applications.</p>
+  <button>Apply Now →</button>
+</div>
+</div>`;
+    });
+
+   //for fulltime button
+   fulltime.addEventListener("click",function(){
+    console.log("full time clicked");
+   });
+   
+   //for parttime button
+   parttime.addEventListener("click",function(){
+     console.log("part time clicked");
+   });
+
+   //for remote button
+   remote.addEventListener("click",function(){
+      console.log("remote clicked");
+   });
+
+
+
+
+
+
+
+
+
+
+    </script>
+       
 </body>
 </html>
