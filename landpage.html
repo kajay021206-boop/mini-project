@@ -25,7 +25,6 @@
         background: #fff;
         align-items: center;
         padding: 10px;
-        position: fixed;
         width: 100%;
         z-index: 10;
       }
@@ -125,7 +124,7 @@
         padding: 20px;
         display: flex;
         gap: 80px;
-        margin-top: 70px;
+        margin-top: 0px;
         justify-content: center;
           background: radial-gradient(circle at top left,rgb(70, 70, 130),transparent 40%),radial-gradient(circle at bottom right,rgb(18, 18, 70),transparent 40%);
       }
@@ -195,8 +194,9 @@
         transition: 0.5s;
        }
        .job:hover{
-        box-shadow: 0 0 10px;
+        box-shadow: 0 0 10px black;
         border-radius: 10px;
+        transform: scale(1.1);
        }
        .logo-job span{
         font-size: 35px;
@@ -371,7 +371,7 @@
       .jobbut{
         display: flex;
         position: absolute;
-        margin-top: 60px;
+        margin-top: 85px;
         gap: 30px;
       }
       .jobbut button{
@@ -391,6 +391,150 @@
         color: #fff;
         border: 2px solid #fff;
         box-shadow: 0 0 12px #2c2c2c;
+      }
+      #jobresult{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: #fff;
+        width: 80%;
+        padding: 20px;
+        height: 480px;
+        margin-top: 130px;
+        opacity: 0;
+        overflow-y: auto;
+        border-radius: 5px;
+        transition: 0.5s;
+      }
+      .jobcard{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: rgba(169, 169, 215, 0.405);
+        border-radius: 10px;
+        padding: 15px;
+      }
+      .jobcardone{
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      .jobcardtwo span{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        font-size: 80px;
+        font-weight: bold;
+        background: #65626261;
+        border-radius: 8px;
+      }
+      .jobthree{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .jobthree h1{
+        font-size: 30px;
+      }
+      .jobthree h2{
+        color: rgb(0, 8, 255);
+        font-size: 18px;
+      }
+      .jobp{
+        display: flex;
+        gap: 30px;
+      }
+      .jobp p{
+        background: #2c2c2c4e;
+        border-radius: 20px;
+        padding: 10px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #fff;
+      }
+      .jobcardfour h3{
+        padding: 10px;
+        background: rgba(101, 229, 101, 0.485);
+        color: green;
+        border-radius: 10px;
+        display: flex;
+        position: relative;
+        margin-left: 500px;
+      }
+      .jobcardinfo{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .jobcardinfo h1{
+        font-size: 21px;
+        color: #1e1a1a;
+        font-weight:bold;
+      }
+      .jobcardinfo p{
+        width: 700px;
+        font-size: 13px;
+        font-weight: bold;
+        color: #494949;
+      }
+      .jobcardinfo button{
+        position: relative;
+        width: 200px;
+        border-radius: 10px;
+        padding: 15px;
+        border:none;
+         background: rgb(9, 9, 255);
+         color: #fff;
+         font-size: 15px;
+        
+      }
+      .jobcardinfo button:hover{
+        background: rgb(10, 10, 113);
+      }
+      .apsabut{
+        display: flex;
+        gap: 20px;
+        justify-content:end;
+       position: relative;
+      }
+     
+      .inputpara{
+        position: absolute;
+        margin-top: 50px;
+        background: #c868ff5a;
+        padding: 5px;
+        width: 380px;
+        border-radius: 5px;
+        text-align: center;
+        opacity: 0;
+      }
+      .re{
+        position: absolute;
+        display: flex;
+        right: 10px;
+        margin-top: -30px;
+      }
+      .re h3{
+        background: #fff;
+        border-radius: 5px;
+        font-size: 20px;
+        padding: 10px;
+        box-shadow: 0 0 12px black;transition: 0.5s;
+      }
+      .jobbut button.active{
+        background: rgb(10, 10, 113);
+        color: #fff; 
+        border: 2px solid #fff;
+        border-radius: 20px;
+        box-shadow: 0 0 12px black;
+      }
+       .savebut{
+        background: orange;
+        border: none;
+      }
+      .savebut:hover{
+        background: rgb(175, 114, 1);
       }
     </style>
 </head>
@@ -428,9 +572,15 @@
         </div>
     </div>
     <div class="searchoption">
+      <div class="re">
+        <h3 id="re">&times;</h3>
+      </div>
       <div class="searchicon">
       <input id="searchinput" type="text" placeholder="Search for jobs,skills or companies...">
       <button id="searchbut"><i class='bx bx-search'></i></button>
+      </div>
+      <div class="inputpara">
+        <p id="inputp"></p>
       </div>
       <div class="jobbut">
         <button id="alljobs"><i class='bx bx-box'></i> All Jobs</button>
@@ -553,7 +703,6 @@
           </div>
             </div>
            </div>
-           
     </section>
         
     <script>
@@ -569,11 +718,11 @@
           const parttime=document.getElementById("parttime");
           const remote=document.getElementById("remote");
           const jobresult=document.getElementById("jobresult");
-
-
-
-
-
+          const inputp=document.getElementById("inputp");
+          const inputpara=document.querySelector(".inputpara");
+          const jobcard=document.querySelectorAll(".jobcard");
+          const re=document.getElementById("re")
+          const navi=document.querySelector(".navi");
 
 
 
@@ -618,61 +767,458 @@
   //for searchoption
   jobfinds.addEventListener("click", function(){
     searchoptions.style.opacity="1";
-     logins.style.opacity="0";
      searchoptions.style.position="fixed";
+     logins.style.opacity="0";
+     navi.style.position="fixed";
   });
 
     //for alljobs button
-    alljobs.addEventListener("click", function(){
+ function showpythonjob(){
         jobresult.innerHTML=`
         <div class="jobcard">
 <div class="jobcardone">
   <div class="jobcardtwo">
-    <span></span>
+    <span><i class='bx bxl-python'></i></span>
   </div>
   <div class="jobthree">
-    <h1>Python Development</h1>
+    <h1>Python Developer</h1>
     <h2>Tech Solution</h2>
     <div class="jobp">
       <p>Hyderabad</p>
       <p>Full-time</p>
     </div>
-    <div class="jobcardfour">
-      <h3>Full-time</h3>
-    </div>
   </div>
+  <div class="jobcardfour">
+      <h3>Full-time 🕛</h3>
+    </div>
 </div>
 <div class="jobcardinfo">
   <h1>Skills:Python,SQL,Git</h1>
   <p>We are looking for a skilled Python Developer to join our growing team.You will working on exciting projects and help build scalable applications.</p>
-  <button>Apply Now →</button>
+  <div class="apsabut">
+  <button class="applybut">⚡ Apply Now →</button>
+  <button class="savebut">Save Now</button>
+  </div>
 </div>
 </div>`;
-    });
+
+jobresult.style.opacity="1";
+  applysave();
+    };
 
    //for fulltime button
-   fulltime.addEventListener("click",function(){
-    console.log("full time clicked");
-   });
+   function showjavascriptjob(){
+      jobresult.innerHTML=`
+        <div class="jobcard">
+<div class="jobcardone">
+  <div class="jobcardtwo">
+    <span><i class='bx bxl-javascript'></i></span>
+  </div>
+  <div class="jobthree">
+    <h1>JavaScript Developer</h1>
+    <h2>Tech Solution</h2>
+    <div class="jobp">
+      <p>Hyderabad</p>
+      <p>Full-time</p>
+    </div>
+  </div>
+  <div class="jobcardfour">
+      <h3>Full-time 🕛</h3>
+    </div>
+</div>
+<div class="jobcardinfo">
+  <h1>Skills:JavaScript,SQL,Git</h1>
+  <p>We are looking for a skilled JavaScript Developer to join our growing team.You will working on exciting projects and help build scalable applications.</p>
+  <div class="apsabut">
+  <button class="applybut">⚡ Apply Now →</button>
+  <button class="savebut">Save Now</button>
+  </div>
+</div>
+</div>`;
+
+jobresult.style.opacity="1";
+    applysave();
+   };
    
    //for parttime button
-   parttime.addEventListener("click",function(){
-     console.log("part time clicked");
-   });
+function showfrontend(){
+      jobresult.innerHTML=`
+        <div class="jobcard">
+<div class="jobcardone">
+  <div class="jobcardtwo">
+    <span><i class='bx bxl-html5'></i></span>
+  </div>
+  <div class="jobthree">
+    <h1>Fronted Developer</h1>
+    <h2>Tech Solution</h2>
+    <div class="jobp">
+      <p>Hyderabad</p>
+      <p>Part-time</p>
+    </div>
+  </div>
+  <div class="jobcardfour">
+      <h3>Part-time 🕛</h3>
+    </div>
+</div>
+<div class="jobcardinfo">
+  <h1>Skills:HTML,CSS,Javscript</h1>
+  <p>We are looking for a skilled Frontend Developer to join our growing team.You will working on exciting projects and help build scalable applications.</p>
+  <div class="apsabut">
+  <button class="applybut">⚡ Apply Now →</button>
+  <button class="savebut">Save Now</button>
+  </div>
+</div>
+</div>`;
+
+jobresult.style.opacity="1";
+   applysave();
+   };
 
    //for remote button
-   remote.addEventListener("click",function(){
-      console.log("remote clicked");
+  function showreactjob(){
+       jobresult.innerHTML=`
+        <div class="jobcard">
+<div class="jobcardone">
+  <div class="jobcardtwo">
+    <span><i class='bx bxl-react'></i></span>
+  </div>
+  <div class="jobthree">
+    <h1>React Developer</h1>
+    <h2>Tech Solution</h2>
+    <div class="jobp">
+      <p>Hyderabad</p>
+      <p>Remote</p>
+    </div>
+  </div>
+  <div class="jobcardfour">
+      <h3>Remote 🌍</h3>
+    </div>
+</div>
+<div class="jobcardinfo">
+  <h1>Skills:JavaScript,React,Git</h1>
+  <p>We are looking for a skilled React Developer to join our growing team.You will working on exciting projects and help build scalable applications.</p>
+  <div class="apsabut">
+  <button class="applybut">⚡ Apply Now →</button>
+  <button class="savebut">Save Now</button>
+  </div>
+</div>
+</div>`;
+
+jobresult.style.opacity="1";
+  applysave();
+   };
+
+   //for inputsaving data
+   searchbut.addEventListener("click", function(){
+      let searchvalue=searchinput.value.trim().toLowerCase();
+      if(searchvalue===""){
+        inputp.textContent="! Please enter a job or skill";
+        inputpara.style.background="rgba(255, 0, 0, 0.163)";
+        inputp.style.color="red"; 
+        inputpara.style.opacity=1;
+      }
+      else{
+         inputp.textContent="Searching.....";
+        inputpara.style.background="rgba(92, 43, 226, 0.238)";
+        inputp.style.color="blue"; 
+         inputpara.style.opacity=1; 
+        setTimeout(function(){
+
+           showalljobs();
+           const jobcard=document.querySelectorAll(".jobcard");
+           let found=false;
+           let count=0;
+           jobcard.forEach(function(card){
+            if(card.textContent.toLowerCase().includes(searchvalue)){
+                card.style.display="flex";
+                found=true;
+                count++;
+            }
+            else{
+              card.style.display="none";
+            }
+           });
+           if(found){
+             inputp.textContent=count +" job found for: " +searchvalue;
+        inputpara.style.background="rgba(0, 128, 0, 0.167)";
+        inputp.style.color="green"; 
+         inputpara.style.opacity=1;
+           }
+           else{
+             inputp.textContent=count+" jobs Found"; 
+           inputp.style.color="red";
+           inputpara.style.background="rgba(255, 0, 0, 0.163)";
+           }
+            searchinput.value="";
+        },1500); 
+      } 
+       
+     });
+    
+    re.addEventListener("click",function(){
+       searchoptions.style.opacity=0;
+       searchoptions.style.position="absolute";
+       logins.style.opacity=1;
+        navi.style.position="relative";
+    });
+
+    function showalljobs(){
+      
+      jobresult.innerHTML=`
+      
+        <div class="jobcard">
+<div class="jobcardone">
+  <div class="jobcardtwo">
+    <span><i class='bx bxl-python'></i></span>
+  </div>
+  <div class="jobthree">
+    <h1>Python Developer</h1>
+    <h2>Tech Solution</h2>
+    <div class="jobp">
+      <p>Hyderabad</p>
+      <p>Full-time</p>
+    </div>
+  </div>
+  <div class="jobcardfour">
+      <h3>Full-time 🕛</h3>
+    </div>
+</div>
+<div class="jobcardinfo">
+  <h1>Skills:Python,SQL,Git</h1>
+  <p>We are looking for a skilled Python Developer to join our growing team.You will working on exciting projects and help build scalable applications.</p>
+  <div class="apsabut">
+  <button class="applybut">⚡ Apply Now →</button>
+  <button class="savebut">Save Now</button>
+  </div>
+</div>
+</div>
+
+ <div class="jobcard">
+<div class="jobcardone">
+  <div class="jobcardtwo">
+    <span><i class='bx bxl-javascript'></i></span>
+  </div>
+  <div class="jobthree">
+    <h1>JavaScript Developer</h1>
+    <h2>Tech Solution</h2>
+    <div class="jobp">
+      <p>Hyderabad</p>
+      <p>Full-time</p>
+    </div>
+  </div>
+  <div class="jobcardfour">
+      <h3>Full-time 🕛</h3>
+    </div>
+</div>
+<div class="jobcardinfo">
+  <h1>Skills:JavaScript,SQL,Git</h1>
+  <p>We are looking for a skilled JavaScript Developer to join our growing team.You will working on exciting projects and help build scalable applications.</p>
+  <div class="apsabut">
+  <button class="applybut">⚡ Apply Now →</button>
+  <button class="savebut">Save Now</button>
+  </div>
+</div>
+</div>
+
+    <div class="jobcard">
+<div class="jobcardone">
+  <div class="jobcardtwo">
+    <span><i class='bx bxl-html5'></i></span>
+  </div>
+  <div class="jobthree">
+    <h1>Fronted Developer</h1>
+    <h2>Tech Solution</h2>
+    <div class="jobp">
+      <p>Hyderabad</p>
+      <p>Part-time</p>
+    </div>
+  </div>
+  <div class="jobcardfour">
+      <h3>Part-time 🕛</h3>
+    </div>
+</div>
+<div class="jobcardinfo">
+  <h1>Skills:HTML,CSS,Javscript</h1>
+  <p>We are looking for a skilled Frontend Developer to join our growing team.You will working on exciting projects and help build scalable applications.</p>
+  <div class="apsabut">
+  <button class="applybut">⚡ Apply Now →</button>
+  <button class="savebut">Save Now</button>
+  </div>
+</div>
+</div>
+
+        <div class="jobcard">
+<div class="jobcardone">
+  <div class="jobcardtwo">
+    <span><i class='bx bxl-react'></i></span>
+  </div>
+  <div class="jobthree">
+    <h1>React Developer</h1>
+    <h2>Tech Solution</h2>
+    <div class="jobp">
+      <p>Hyderabad</p>
+      <p>Remote</p>
+    </div>
+  </div>
+  <div class="jobcardfour">
+      <h3>Remote 🌍</h3>
+    </div>
+</div>
+<div class="jobcardinfo">
+  <h1>Skills:JavaScript,React,Git</h1>
+  <p>We are looking for a skilled React Developer to join our growing team.You will working on exciting projects and help build scalable applications.</p>
+  <div class="apsabut">
+  <button class="applybut">⚡ Apply Now →</button>
+  <button class="savebut">Save Now</button>
+  </div>
+</div>
+</div>
+
+      `;
+      applysave();
+     jobresult.style.opacity=1;
+    };
+
+   alljobs.addEventListener("click",function(){
+    inputp.textContent="Showing all jobs";
+     inputpara.style.opacity=1;
+      fulltime.classList.remove("active");
+   
+   
+   alljobs.classList.add("active");
+
+   
+   parttime.classList.remove("active");
+
+   
+   remote.classList.remove("active");
+    
+   showalljobs();
+
    });
 
+    fulltime.addEventListener("click",function(){
+    inputp.textContent="Showing full-time jobs";
+     inputpara.style.opacity=1;
+     fulltime.classList.add("active");
+   
+   
+   alljobs.classList.remove("active");
 
+   
+   parttime.classList.remove("active");
 
+   
+   remote.classList.remove("active");
+   
+   showalljobs();
+   const jobcard = document.querySelectorAll(".jobcard");
+   jobcard.forEach(function(card){
+      if(card.textContent.includes("Full-time")){
+        card.style.display="flex";
+      }
+      else{
+        card.style.display="none";
+      }
+   });
+   });
+    parttime.addEventListener("click",function(){
+    inputp.textContent="Showing part-time jobs";
+     inputpara.style.opacity=1;
+     fulltime.classList.remove("active");
+   
+   
+   alljobs.classList.remove("active");
 
+   
+   parttime.classList.add("active");
 
+   
+   remote.classList.remove("active");
+   showalljobs();
+   const jobcard = document.querySelectorAll(".jobcard");
+   jobcard.forEach(function(card){
+      if(card.textContent.includes("Part-time")){
+        card.style.display="flex";
+      }
+      else{
+        card.style.display="none";
+      }
+   });
+   });
+    remote.addEventListener("click",function(){
+    inputp.textContent="Showing remote jobs";
+     inputpara.style.opacity=1;
+     fulltime.classList.remove("active");
+   
+   
+   alljobs.classList.remove("active");
 
+   
+   parttime.classList.remove("active");
 
+   
+   remote.classList.add("active");
+   showalljobs();
+   const jobcard = document.querySelectorAll(".jobcard");
+   jobcard.forEach(function(card){
+      if(card.textContent.includes("Remote")){
+        card.style.display="flex";
+      }
+      else{
+        card.style.display="none";
+      }
+   });
+   });
+   
+   
 
+ function applysave(){
+ // for apply button
+const applybut=document.querySelectorAll(".applybut");
 
+   applybut.forEach(function(button){
+    button.addEventListener("click", function(){
+      let count=0;
+      let applying=setInterval(function(){
+         count++;
+         button.textContent="Applying"+".".repeat(count);
+         if(count===7){
+          clearInterval(applying);
+          button.textContent="Applied 👍";
+          button.style.background="green";
+          button.style.border="2px solid #fff"
+          button.style.borderRadius="5px";
+         }
+      },500);
+  });
+   });
+
+      //for save button
+      const savebut=document.querySelectorAll(".savebut");
+        
+     savebut.forEach(function(button){
+      button.addEventListener("click",function(){
+         let count=0;
+      let saving=setInterval(function(){
+         count++;
+         button.textContent="saving"+".".repeat(count);
+         if(count===7){
+          clearInterval(saving);
+          button.textContent="saved 🔥";
+          button.style.background="blue";
+          button.style.border="2px solid #fff"
+          button.style.borderRadius="5px";
+         }
+      },500);
+      });
+     });
+ };
+ searchinput.addEventListener("keydown",function(event){
+     if(event.key==="Enter"){
+      searchbut.click();
+     }
+ });
 
     </script>
        
