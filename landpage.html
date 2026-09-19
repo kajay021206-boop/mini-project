@@ -536,6 +536,10 @@
       .savebut:hover{
         background: rgb(175, 114, 1);
       }
+      .noresult{
+    text-align: center;
+    padding: 50px;
+}
     </style>
 </head>
 <body>
@@ -723,7 +727,7 @@
           const jobcard=document.querySelectorAll(".jobcard");
           const re=document.getElementById("re")
           const navi=document.querySelector(".navi");
-
+          const noresult=document.querySelector(".noresult");
 
 
    //for findjob button
@@ -911,17 +915,37 @@ jobresult.style.opacity="1";
    //for inputsaving data
    searchbut.addEventListener("click", function(){
       let searchvalue=searchinput.value.trim().toLowerCase();
+        jobresult.innerHTML="";
+        jobresult.style.opacity=0;
+        alljobs.classList.remove("active");
+fulltime.classList.remove("active");
+parttime.classList.remove("active");
+remote.classList.remove("active");
       if(searchvalue===""){
         inputp.textContent="! Please enter a job or skill";
         inputpara.style.background="rgba(255, 0, 0, 0.163)";
         inputp.style.color="red"; 
         inputpara.style.opacity=1;
+      
       }
       else{
-         inputp.textContent="Searching.....";
-        inputpara.style.background="rgba(92, 43, 226, 0.238)";
+        inputp.textContent = "     ";
+inputpara.style.background = "rgba(92, 43, 226, 0.238)";
+inputp.style.color = "blue";
+        let count=0;
+      let sea=setInterval(function(){
+          count++;
+         inputp.innerHTML="searching"+".".repeat(count);
+           inputpara.style.background="rgba(92, 43, 226, 0.238)";
         inputp.style.color="blue"; 
-         inputpara.style.opacity=1; 
+         inputpara.style.opacity=1;
+          if(count===7){
+            clearInterval(sea);
+          }
+           
+      },500);
+         
+        
         setTimeout(function(){
 
            showalljobs();
@@ -948,9 +972,18 @@ jobresult.style.opacity="1";
              inputp.textContent=count+" jobs Found"; 
            inputp.style.color="red";
            inputpara.style.background="rgba(255, 0, 0, 0.163)";
+               jobresult.innerHTML = `
+        <div class="noresult">
+            <h2>😕 No Jobs Found</h2>
+            <p>Try searching for another skill or company.</p>
+        </div>
+    `;
+
+    jobresult.style.opacity = "1";
+
            }
             searchinput.value="";
-        },1500); 
+        },3500); 
       } 
        
      });
@@ -960,6 +993,9 @@ jobresult.style.opacity="1";
        searchoptions.style.position="absolute";
        logins.style.opacity=1;
         navi.style.position="relative";
+        jobresult.innerHTML="";
+        jobresult.style.opacity=0;
+        inputpara.style.opacity=0;
     });
 
     function showalljobs(){
@@ -1072,9 +1108,7 @@ jobresult.style.opacity="1";
   <button class="savebut">Save Now</button>
   </div>
 </div>
-</div>
-
-      `;
+</div>`;
       applysave();
      jobresult.style.opacity=1;
     };

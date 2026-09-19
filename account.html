@@ -345,13 +345,13 @@
 
                 <div class="box">
                     <div class="box-one">
-                        <input type="text" required>
+                        <input id="fullname" type="text" required>
                         <span><i class='bx bxs-user-circle'></i></span>
                         <h3>Full Name</h3>
                         <i></i>
                     </div>
                      <div class="box-one">
-                        <input type="eamil" required>
+                        <input id="email" type="email" required>
                         <span><i class='bx bxl-gmail'></i></span>
                         <h3>Email Address</h3>
                         <i></i>
@@ -360,13 +360,13 @@
 
                  <div class="box">
                     <div class="box-one">
-                        <input type="password" required>
+                        <input id="password" type="password" required>
                         <span><i class='bx bxs-lock-alt'></i></span>
                         <h3>Password</h3>
                         <i></i>
                     </div>
                      <div class="box-one">
-                        <input type="password" required>
+                        <input id="conformpassword" type="password" required>
                          <span><i class='bx bxs-lock-alt'></i></span>
                         <h3>Confirm Password</h3>
                         <i></i>
@@ -375,13 +375,13 @@
 
                 <div class="box">
                     <div class="box-one">
-                        <input type="text" required>
+                        <input id="education" type="text" required>
                          <span><i class='bx bxs-graduation'></i></span>
                         <h3>Education Level</h3>
                         <i></i>
                     </div>
                      <div class="box-one">
-                        <input type="text" required>
+                        <input id="experience" type="text" required>
                          <span><i class='bx bxs-shopping-bag'></i></span>
                         <h3>Experience Level</h3>
                         <i></i>
@@ -400,7 +400,7 @@
             </div>
             <div class="skill-input">
             
-                <input type="text" placeholder="Add your skills (e.g. Python,SQL,Data Analysis)">
+                <input id="skills" type="text" placeholder="Add your skills (e.g. Python,SQL,Data Analysis)">
              
             </div>
            </div>
@@ -408,14 +408,14 @@
 
            <div class="agree">
            
-                <input type="checkbox">
+                <input id="terms" type="checkbox">
                 <p>I agree to the<a href="#">Terms & Conditions and Privacy Policy.</a></p>
            
            </div>
 
              
            <div class="login-button">
-            <button>Create Account</button>
+            <button id="createaccount">Create Account</button>
           </div>
 
               <div class="line">
@@ -442,5 +442,63 @@
 
 
      </div>
+
+
+     <script>
+          
+
+      const fullname=document.getElementById("fullname");
+      const email=document.getElementById("email");
+      const password=document.getElementById("password");
+      const conformpassword=document.getElementById("conformpassword");
+      const education=document.getElementById("education");
+      const experience=document.getElementById("experience");
+      const skills=document.getElementById("skills");
+      const terms=document.getElementById("terms");
+      const createaccount=document.getElementById("createaccount");
+
+       //click createaccount button
+    createaccount.addEventListener("click",function(){
+        if(
+          fullname.value.trim()===""||
+           email.value.trim()===""||
+            password.value.trim()===""||
+             conformpassword.value.trim()===""||
+              education.value.trim()===""||
+               experience.value.trim()===""||
+                skills.value.trim()===""
+        ){
+          alert("Please fill all the fields");
+          return;
+        }
+        if(password.value!==conformpassword.value){
+          alert("Password do not match");
+          return;
+        }
+        if(!terms.checked){
+          alert("Please agree to Terms and Conditions");
+          return;
+        }
+       const user={
+        fullname:fullname.value,
+        email:email.value,
+        password:password.value,
+        education:education.value,
+        experience:experience.value,
+        skills:skills.value
+       };
+       localStorage.setItem("skillmatchuser",JSON.stringify(user));
+       alert("Account created successfully 👍");
+    });
+
+
+
+
+
+     </script>
+
+
+
+
 </body>
 </html>

@@ -194,7 +194,6 @@
       .right-one{
         display: flex;
         background-color: #fff;
-        justify-content: space-between;
         position: fixed;
         width: 84%;
          z-index: 5;
@@ -220,7 +219,7 @@
         }
         .message{
           display: flex;
-          width: 300px;
+          width: 600px;
           justify-content:space-evenly;
           align-items: center;
         }
@@ -624,7 +623,7 @@
                 <span><i class='bx bxs-user-circle'></i></span>
             </div>
             <div class="pro-info">
-                <h2>Hello, Kaja!</h2>
+                <h2 id="username" >Hello, Kaja!</h2>
                 <h3>Job Seeker</h3>
             </div>
         </div>
@@ -715,7 +714,7 @@
             <span class="sp-two"><i class='bx bx-message'></i></span>
             </div>
             <div class="search-two">
-              <h2>Kaja</h2>
+              <h2 id="usernameone">Kaja</h2>
               <span><i class='bx bxs-user-circle'></i></span>
             </div>
           </div>
@@ -740,13 +739,13 @@
       <div class="profile-details">
        <span class="person"><i class='bx bxs-user-circle'></i></span>
         <div class="user-meta">
-          <h3>Kaja</h3>
+          <h3 id="usernametwo">Kaja</h3>
           <span class="badge"><i class="ph ph-briefcase"></i> Job Seeker</span>
           <p class="bio">Passionate about Data Science and AI</p>
         </div>
       </div>
       <ul class="contact-list">
-        <li><i class="ph ph-envelope"></i> kaja@example.com</li>
+        <li><i class="ph ph-envelope"></i><span id="useremail"> kaja@example.com</span></li>
         <li><i class="ph ph-phone"></i> +91 98765 43210</li>
         <li><i class="ph ph-map-pin"></i> Bangalore, India</li>
         <li><i class="ph ph-calendar-blank"></i> Joined on May 15, 2024</li>
@@ -761,7 +760,7 @@
       </div>
       <div class="skills-list">
         <div class="skill-item">
-          <div class="skill-info"><span>Python</span><span>90%</span></div>
+          <div class="skill-info"><span id="userskill">Python</span><span>90%</span></div>
           <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
         </div>
         <div class="skill-item">
@@ -908,5 +907,18 @@
       </div>
       
     </div>
+    <script>
+
+     const saveuser=JSON.parse(localStorage.getItem("skillmatchuser"));
+     if(saveuser){
+      document.getElementById("username").textContent="Hello "+saveuser.fullname;
+      document.getElementById("usernameone").textContent=saveuser.fullname;
+      document.getElementById("usernametwo").textContent=saveuser.fullname;
+      document.getElementById("useremail").textContent=saveuser.email;
+      document.getElementById("userskill").textContent=saveuser.skills;
+     }
+
+
+    </script>
 </body>
 </html>

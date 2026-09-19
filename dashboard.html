@@ -184,9 +184,9 @@
       .right-one{
         display: flex;
         background-color: #fff;
-        justify-content: space-between;
         position: fixed;
         width: 84%;
+        gap: 50px;
          z-index: 5;
       }
         .search{
@@ -210,7 +210,7 @@
         }
         .message{
           display: flex;
-          width: 300px;
+          width: 600px;
           justify-content:space-evenly;
           align-items: center;
         }
@@ -697,7 +697,7 @@
                 <span><i class='bx bxs-user-circle'></i></span>
             </div>
             <div class="pro-info">
-                <h2>Hello, Kaja!</h2>
+                <h2 id="username">Hello, Kaja!</h2>
                 <h3>Job Seeker</h3>
             </div>
         </div>
@@ -788,7 +788,7 @@
             <span class="sp-two"><i class='bx bx-message'></i></span>
             </div>
             <div class="search-two">
-              <h2>Kaja</h2>
+              <h2 id="usernameone">Kaja</h2>
               <span><i class='bx bxs-user-circle'></i></span>
             </div>
           </div>
@@ -797,7 +797,7 @@
 
         <div class="right-two">
           <div class="wel">
-          <h1>Welcome back, Kaja!👋</h1>
+          <h1 id="usernametwo">Welcome back, Kaja!👋</h1>
           <p>Here's what's happening with your career journey today.</p>
           </div>
           <div class="wel-but">
@@ -1096,5 +1096,18 @@
       </div>
       
     </div>
+
+    <script>
+     
+     const saveuser=JSON.parse(localStorage.getItem("skillmatchuser"));
+
+     if(saveuser){
+      document.getElementById("username").textContent="Hello "+saveuser.fullname;
+      document.getElementById("usernameone").textContent=saveuser.fullname;
+      document.getElementById("usernametwo").textContent="Welcome back, "+saveuser.fullname+"! 👋";
+     }
+    
+
+    </script>
 </body>
 </html>
