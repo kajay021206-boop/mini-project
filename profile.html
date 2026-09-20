@@ -602,6 +602,214 @@
   a{
     text-decoration: none;
   }
+  /* Personal Information Card */
+.personal-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(70, 40, 150, 0.08);
+}
+
+/* Header */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-title i {
+    font-size: 23px;
+    color: #5424d6;
+}
+
+.card-title h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #292442;
+}
+
+/* Edit Button */
+.edit-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 13px;
+    border: none;
+    border-radius: 7px;
+    background: #f0eaff;
+    color: #5424d6;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.edit-btn:hover {
+    background: #e5dcff;
+}
+
+/* Main profile area */
+.personal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-main {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+/* Profile Image */
+.profile-avatar {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: #eee8ff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.profile-avatar i {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+
+    background: #4b18d5;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+}
+
+/* Name */
+.profile-basic h2 {
+    margin: 0 0 7px;
+    font-size: 21px;
+    color: #292442;
+}
+
+/* Job Seeker Badge */
+.job-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px 10px;
+    border-radius: 6px;
+
+    background: #eee8ff;
+    color: #5424d6;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Bio */
+.profile-bio {
+    margin: 9px 0 0;
+    color: #6d6880;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Contact Information */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #5e5975;
+    font-size: 13px;
+}
+
+.contact-item i {
+    width: 20px;
+    color: #5b20e8;
+    font-size: 18px;
+}
+
+/* Education + Experience */
+.profile-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    padding: 13px 18px;
+    border-radius: 10px;
+
+    background: #f3efff;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.summary-item > i {
+    color: #5b20e8;
+    font-size: 22px;
+}
+
+.summary-item small {
+    display: block;
+    margin-bottom: 4px;
+
+    color: #6d6683;
+    font-size: 11px;
+}
+
+.summary-item p {
+    margin: 0;
+    color: #39334f;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    .profile-summary {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .profile-main {
+        align-items: flex-start;
+    }
+
+    .profile-avatar {
+        width: 65px;
+        height: 65px;
+    }
+
+    .profile-avatar i {
+        width: 48px;
+        height: 48px;
+        font-size: 25px;
+    }
+}
      </style>
 </head>
 <body>
@@ -732,25 +940,109 @@
  
   <div class="grid-container grid-top">
     
-    <div class="card profile-info-card">
-      <div class="card-header-simple">
-        <i class="ph ph-user"></i> Personal Information
-      </div>
-      <div class="profile-details">
-       <span class="person"><i class='bx bxs-user-circle'></i></span>
-        <div class="user-meta">
-          <h3 id="usernametwo">Kaja</h3>
-          <span class="badge"><i class="ph ph-briefcase"></i> Job Seeker</span>
-          <p class="bio">Passionate about Data Science and AI</p>
+    <div class="profile-card personal-card">
+
+    <div class="card-header">
+        <div class="card-title">
+            <i class='bx bx-user'></i>
+            <h2>Personal Information</h2>
         </div>
-      </div>
-      <ul class="contact-list">
-        <li><i class="ph ph-envelope"></i><span id="useremail"> kaja@example.com</span></li>
-        <li><i class="ph ph-phone"></i> +91 98765 43210</li>
-        <li><i class="ph ph-map-pin"></i> Bangalore, India</li>
-        <li><i class="ph ph-calendar-blank"></i> Joined on May 15, 2024</li>
-      </ul>
+
+        <button class="edit-btn" id="editbut">
+            <i class='bx bx-edit'></i>
+            Edit
+        </button>
     </div>
+
+    <div class="personal-content">
+
+        <!-- Left: Profile -->
+        <div class="profile-main">
+
+            <div class="profile-avatar">
+                <i class='bx bx-user'></i>
+            </div>
+
+            <div class="profile-basic">
+
+                <h2 id="usernametwo">Kaja</h2>
+
+                <span class="job-badge">
+                    <i class='bx bxs-briefcase'></i>
+                    Job Seeker
+                </span>
+
+                <p class="profile-bio" id="paracha">
+                    Passionate about Data Science, AI and
+                    building innovative solutions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+
+            <div class="contact-item">
+                <i class='bx bx-envelope'></i>
+                <span id="useremail">kaja@example.com</span>
+            </div>
+
+            <div class="contact-item">
+                <i class='bx bx-phone'></i>
+                <span id="phonenum">+91 98765 43210</span>
+            </div>
+
+            <div class="contact-item">
+                <i class='bx bx-map'></i>
+                <span id="place">Bangalore, India</span>
+            </div>
+
+            <div class="contact-item">
+                <i class='bx bx-calendar'></i>
+                <span id="joined">Joined on May 15, 2024</span>
+            </div>
+
+        </div>
+
+ 
+        <!-- Education + Experience -->
+        <div class="profile-summary">
+
+            <div class="summary-item">
+
+                <i class='bx bxs-graduation'></i>
+
+                <div>
+                    <small>Education</small>
+                    <p id="usereducation">
+                        B.Tech in Computer Science
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="summary-item">
+
+                <i class='bx bx-briefcase-alt-2'></i>
+
+                <div>
+                    <small>Experience</small>
+                    <p id="userexperience">
+                        2+ Years
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
     
     <div class="card">
@@ -888,7 +1180,7 @@
           <div class="resume-info">
             <i class="ph ph-file-pdf"></i>
             <div>
-              <strong>Kaja_Resume.pdf</strong>
+              <strong id="userthree">Kaja_Resume.pdf</strong>
               <p>Uploaded on May 20, 2024</p>
             </div>
           </div>
@@ -916,9 +1208,82 @@
       document.getElementById("usernametwo").textContent=saveuser.fullname;
       document.getElementById("useremail").textContent=saveuser.email;
       document.getElementById("userskill").textContent=saveuser.skills;
+      document.getElementById("userthree").textContent=saveuser.fullname+"_Resume.pdf";
+      document.getElementById("usereducation").textContent=saveuser.education;
+      document.getElementById("userexperience").textContent=saveuser.experience;
      }
+      const paracha=document.getElementById("paracha");
+      const editbut=document.getElementById("editbut");
+      const phonenum=document.getElementById("phonenum");
+      const place=document.getElementById("place");
+      const joined=document.getElementById("joined");
+      
+      editbut.addEventListener("click", function(){
+          const saveuser=JSON.parse(localStorage.getItem("skillmatchuser"));
+          if(!saveuser){
+            alert("User data not found");
+            return;
+          }
+             //name
+          const usernametwo=document.getElementById("usernametwo");
+          const nameinput=document.createElement("input");
+          nameinput.type="text";
+          nameinput.value=saveuser.fullname;
+          usernametwo.replaceWith(nameinput);
+
+      //para
+      const paracha=document.getElementById("paracha");
+      const parachange=document.createElement("input");
+      parachange.type="text";
+      parachange.value="your experiences details";
+      paracha.replaceWith(parachange);
+
+    //num
+      const phonenum=document.getElementById("phonenum");
+       const phone=document.createElement("input");
+      phone.type="text";
+      phone.value="Mobile Num";
+      phonenum.replaceWith(phone);
+
+      //place
+      const place=document.getElementById("place");
+      const loc=document.createElement("input");
+      loc.type="text";
+      loc.value="Studing place";
+      place.replaceWith(loc);
+
+     //joined date
+      const joined=document.getElementById("joined");
+      const joi=document.createElement("input");
+      joi.type="text";
+      joi.value="your joined date";
+      joined.replaceWith(joi);
+
+      //email
+      const useremail=document.getElementById("useremail");
+      const email=document.createElement("input");
+     email.type="text";
+      email.value="your Email";
+      useremail.replaceWith(email);
+
+      editbut.innerHTML="Save";
+
+      editbut.onclick=function(){
+        saveuser.fullname=nameinput.value;
+        saveuser.email=email.value;
+        saveuser.phone = phone.value;
+    saveuser.location = loc.value;
+    saveuser.joined = joi.value;
+    saveuser.bio = parachange.value;
 
 
+        localStorage.setItem("skillmatchuser",JSON.stringify(saveuser));
+        alert("Profile update successfully 👍");
+        location.reload();
+      };
+      
+      
+      });
     </script>
 </body>
 </html>
