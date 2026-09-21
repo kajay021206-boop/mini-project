@@ -965,7 +965,7 @@
 
             <div class="profile-basic">
 
-                <h2 id="usernametwo">Kaja</h2>
+                <h2 id="usernametwo"></h2>
 
                 <span class="job-badge">
                     <i class='bx bxs-briefcase'></i>
@@ -973,8 +973,7 @@
                 </span>
 
                 <p class="profile-bio" id="paracha">
-                    Passionate about Data Science, AI and
-                    building innovative solutions.
+                    Technical information:
                 </p>
 
             </div>
@@ -987,22 +986,22 @@
 
             <div class="contact-item">
                 <i class='bx bx-envelope'></i>
-                <span id="useremail">kaja@example.com</span>
+                <span id="useremail"></span>
             </div>
 
             <div class="contact-item">
                 <i class='bx bx-phone'></i>
-                <span id="phonenum">+91 98765 43210</span>
+                <span id="phonenum">+91 XXXXXXXXXX</span>
             </div>
 
             <div class="contact-item">
                 <i class='bx bx-map'></i>
-                <span id="place">Bangalore, India</span>
+                <span id="place">----------------</span>
             </div>
 
             <div class="contact-item">
                 <i class='bx bx-calendar'></i>
-                <span id="joined">Joined on May 15, 2024</span>
+                <span id="joined">-----------------</span>
             </div>
 
         </div>
@@ -1017,8 +1016,8 @@
 
                 <div>
                     <small>Education</small>
-                    <p id="usereducation">
-                        B.Tech in Computer Science
+                    <p id="ueducation">
+          
                     </p>
                 </div>
 
@@ -1032,7 +1031,7 @@
                 <div>
                     <small>Experience</small>
                     <p id="userexperience">
-                        2+ Years
+        
                     </p>
                 </div>
 
@@ -1048,11 +1047,11 @@
     <div class="card">
       <div class="card-header">
         <span><i class="ph ph-code"></i>Skills</span>
-        <a href="#" class="card-action">+ Add Skills</a>
+        <a href="#" class="card-action" id="addskills">+ Add Skills</a>
       </div>
-      <div class="skills-list">
+      <div class="skills-list" id="skillslist">
         <div class="skill-item">
-          <div class="skill-info"><span id="userskill">Python</span><span>90%</span></div>
+          <div class="skill-info"><span>Python</span><span>90%</span></div>
           <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
         </div>
         <div class="skill-item">
@@ -1072,7 +1071,7 @@
           <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
         </div>
       </div>
-      <button class="btn-secondary full-width">View all skills</button>
+      <button class="btn-secondary full-width" id="viewallskills">View all skills</button>
     </div>
 
     <!-- Profile Strength Card -->
@@ -1209,81 +1208,9 @@
       document.getElementById("useremail").textContent=saveuser.email;
       document.getElementById("userskill").textContent=saveuser.skills;
       document.getElementById("userthree").textContent=saveuser.fullname+"_Resume.pdf";
-      document.getElementById("usereducation").textContent=saveuser.education;
-      document.getElementById("userexperience").textContent=saveuser.experience;
+      document.getElementById("ueducation").textContent=saveuser.education;
+      document.getElementById("userexperience").textContent=saveuser.fullname;
      }
-      const paracha=document.getElementById("paracha");
-      const editbut=document.getElementById("editbut");
-      const phonenum=document.getElementById("phonenum");
-      const place=document.getElementById("place");
-      const joined=document.getElementById("joined");
-      
-      editbut.addEventListener("click", function(){
-          const saveuser=JSON.parse(localStorage.getItem("skillmatchuser"));
-          if(!saveuser){
-            alert("User data not found");
-            return;
-          }
-             //name
-          const usernametwo=document.getElementById("usernametwo");
-          const nameinput=document.createElement("input");
-          nameinput.type="text";
-          nameinput.value=saveuser.fullname;
-          usernametwo.replaceWith(nameinput);
-
-      //para
-      const paracha=document.getElementById("paracha");
-      const parachange=document.createElement("input");
-      parachange.type="text";
-      parachange.value="your experiences details";
-      paracha.replaceWith(parachange);
-
-    //num
-      const phonenum=document.getElementById("phonenum");
-       const phone=document.createElement("input");
-      phone.type="text";
-      phone.value="Mobile Num";
-      phonenum.replaceWith(phone);
-
-      //place
-      const place=document.getElementById("place");
-      const loc=document.createElement("input");
-      loc.type="text";
-      loc.value="Studing place";
-      place.replaceWith(loc);
-
-     //joined date
-      const joined=document.getElementById("joined");
-      const joi=document.createElement("input");
-      joi.type="text";
-      joi.value="your joined date";
-      joined.replaceWith(joi);
-
-      //email
-      const useremail=document.getElementById("useremail");
-      const email=document.createElement("input");
-     email.type="text";
-      email.value="your Email";
-      useremail.replaceWith(email);
-
-      editbut.innerHTML="Save";
-
-      editbut.onclick=function(){
-        saveuser.fullname=nameinput.value;
-        saveuser.email=email.value;
-        saveuser.phone = phone.value;
-    saveuser.location = loc.value;
-    saveuser.joined = joi.value;
-    saveuser.bio = parachange.value;
-
-
-        localStorage.setItem("skillmatchuser",JSON.stringify(saveuser));
-        alert("Profile update successfully 👍");
-        location.reload();
-      };
-      
-      
-      });
     </script>
 </body>
 </html>

@@ -415,7 +415,9 @@
 
              
            <div class="login-button">
+            <a href="dashboard.html">
             <button id="createaccount">Create Account</button>
+            </a>
           </div>
 
               <div class="line">
@@ -485,10 +487,7 @@
         password:password.value,
         education:education.value,
         experience:experience.value,
-        skills:skills.value,
-        phone: "",
-        location: "",
-       joined: ""
+        skills:skills.value
        };
        localStorage.setItem("skillmatchuser",JSON.stringify(user));
        alert("Account created successfully 👍");

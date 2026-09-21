@@ -539,7 +539,74 @@
       .noresult{
     text-align: center;
     padding: 50px;
-}
+     }
+     #jjj{
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: 450px;
+      height: 470px;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 12px black;
+      padding: 20px;
+      justify-content: center;
+      align-items: center;
+      gap:10px;
+      z-index: -2;
+      opacity: 0;
+     }
+     .jjjone span{
+      font-size: 70px;
+      font-weight: bold;
+      background: linear-gradient(35deg,rgb(48, 0, 179),rgb(48, 0, 179),#fff,black,rgb(48, 0, 179));
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      color: #070707;
+      box-shadow: 0 0 12px rgb(60, 0, 128);
+     }
+     .jjjtwo{
+      text-align: center;
+     }
+     .jjjthree{
+      display: flex;
+     }
+     .jjjthree button{
+      padding:20px;
+      width:400px;
+      border-radius: 6px;
+       background: rgb(0, 13, 255);
+       color: #fff;
+       font-size: 20px;
+     }
+     .threejjj button{
+      padding: 20px;
+      width: 400px;
+      border-radius: 6px;
+       border: 2px solid rgb(0, 13, 255);
+       color:rgb(0, 13, 255) ;
+       font-size: 20px;
+       background: #e7e7e7;
+     }
+     .jjjthree button:hover{
+      background: rgb(12, 17, 121);
+     }
+     .threejjj button:hover{
+      background: #a1a4ae;
+     }
+     #jjj h3{
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 5px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px black;
+     }
     </style>
 </head>
 <body>
@@ -588,12 +655,32 @@
       </div>
       <div class="jobbut">
         <button id="alljobs"><i class='bx bx-box'></i> All Jobs</button>
-          <button id="fulltime"><i class='bx bx-briefcase'></i> Full-time</button>
-            <button id="parttime"><i class='bx bx-time'></i> Part-time</button>
-              <button id="remote"><i class='bx bx-search'></i> Remote</button>
+        <button id="fulltime"><i class='bx bx-briefcase'></i> Full-time</button>
+        <button id="parttime"><i class='bx bx-time'></i> Part-time</button>
+        <button id="remote"><i class='bx bx-search'></i> Remote</button>
       </div>
       <div id="jobresult">
 
+      </div>
+      <div id="jjj">
+          <div class="jjjone">
+            <span><i class='bx bx-lock'></i></span>
+          </div>
+          <div class="jjjtwo">
+            <h1>Please sign up for an account</h1>
+            <p>You need to create an account to apply for jobs and save your favourite jobs.</p>
+          </div>
+          <div class="jjjthree">
+            <a href="account.html">
+            <button>Sign Up</button>
+            </a>
+          </div>
+          <div class="threejjj">
+            <a href="loginpage.html">
+            <button>Log In</button>
+            </a>
+          </div>
+          <h3 id="signremove">&times;</h3>
       </div>
     </div>
 
@@ -728,6 +815,11 @@
           const re=document.getElementById("re")
           const navi=document.querySelector(".navi");
           const noresult=document.querySelector(".noresult");
+          const jjj=document.getElementById("jjj");
+          const signremove=document.getElementById("signremove"); 
+
+
+
 
 
    //for findjob button
@@ -1205,7 +1297,17 @@ inputp.style.color = "blue";
    });
    });
    
-   
+
+   function sign(){
+     jjj.style.zIndex="35";
+      jjj.style.opacity="1"
+   }
+   function sighrem(){
+
+   signremove.addEventListener("click",function(){
+    jjj.style.opacity="0"
+   })
+   }
 
  function applysave(){
  // for apply button
@@ -1213,18 +1315,8 @@ const applybut=document.querySelectorAll(".applybut");
 
    applybut.forEach(function(button){
     button.addEventListener("click", function(){
-      let count=0;
-      let applying=setInterval(function(){
-         count++;
-         button.textContent="Applying"+".".repeat(count);
-         if(count===7){
-          clearInterval(applying);
-          button.textContent="Applied 👍";
-          button.style.background="green";
-          button.style.border="2px solid #fff"
-          button.style.borderRadius="5px";
-         }
-      },500);
+     sign();
+     sighrem();  
   });
    });
 
@@ -1233,18 +1325,8 @@ const applybut=document.querySelectorAll(".applybut");
         
      savebut.forEach(function(button){
       button.addEventListener("click",function(){
-         let count=0;
-      let saving=setInterval(function(){
-         count++;
-         button.textContent="saving"+".".repeat(count);
-         if(count===7){
-          clearInterval(saving);
-          button.textContent="saved 🔥";
-          button.style.background="blue";
-          button.style.border="2px solid #fff"
-          button.style.borderRadius="5px";
-         }
-      },500);
+        sign();
+        sighrem();   
       });
      });
  };
